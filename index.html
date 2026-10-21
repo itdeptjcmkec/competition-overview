@@ -229,6 +229,7 @@
     .c11 { --accent: #a04435; }
     .c12 { --accent: #b02a6b; }
     .c13 { --accent: #5e4fa3; }
+    .c14 { --accent: #c2501e; }
     @media (prefers-color-scheme: dark) {
       .c5 { --accent: #b5cf70; }
       .c6 { --accent: #e5a36c; }
@@ -239,6 +240,7 @@
       .c11 { --accent: #e09a8e; }
       .c12 { --accent: #e58bb5; }
       .c13 { --accent: #b3a6e8; }
+      .c14 { --accent: #f0916a; }
     }
 
     .cards { display: grid; gap: 18px; }
@@ -275,6 +277,7 @@
     .competition.c11 { --brand: #a04435; }
     .competition.c12 { --brand: #b02a6b; }
     .competition.c13 { --brand: #5e4fa3; }
+    .competition.c14 { --brand: #b34a1d; }
     .body { padding: 26px 28px 30px; min-width: 0; }
     .topline { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
     .body h3 { margin: 0; font-size: clamp(1.25rem, 2.5vw, 1.72rem); line-height: 1.28; letter-spacing: -.025em; }
@@ -442,12 +445,12 @@
   <main class="page">
     <section class="hero" aria-labelledby="main-title">
       <div>
-        <h1 id="main-title">十三項中學創科比賽，一頁比較</h1>
+        <h1 id="main-title">十四項中學創科比賽，一頁比較</h1>
         <p class="hero-intro">由參賽人數、作品形式到獎項與截止日期，先看最緊急的，再按年級、組隊情境和所需支援篩選合適機會。</p>
       </div>
       <aside class="snapshot" aria-label="資料狀態">
-        <strong>2026 年 10 月 19 日更新</strong>
-        <p>新增氫建未來．小紅花 AI 向善挑戰賽及香港創科高峰會；AlipayHK 已截止報名。</p>
+        <strong>2026 年 10 月 20 日更新</strong>
+        <p>新增學生創新大賽 2027（香港教育城）；AlipayHK 已截止報名。</p>
       </aside>
     </section>
 
@@ -508,9 +511,10 @@
             <button class="filter" type="button" data-value="design-creation" aria-pressed="false">設計創作支援</button>
             <button class="filter" type="button" data-value="ai-carbon" aria-pressed="false">AI＋碳中和作品製作支援</button>
             <button class="filter" type="button" data-value="ai-solution" aria-pressed="false">AI 方案製作支援</button>
+            <button class="filter" type="button" data-value="innovation-plan" aria-pressed="false">創新方案企劃</button>
           </div>
         </div>
-        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 13 項比賽</p>
+        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 14 項比賽</p>
       </div>
 
       <div class="compare" id="compare-grid">
@@ -668,6 +672,18 @@
             <li><b>費用</b><span>全免</span></li>
             <li><b>主作品</b><span>AI 解決真實問題方案</span></li>
             <li><b>報名截止</b><span>11 月 11 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c14" data-competition="c14" data-grades="junior senior" data-contexts="pair small mid" data-eligibility="junior:pair,small,mid;senior:pair,small,mid" data-supports="innovation-plan prototype">
+          <span class="comp-code">14 · 創新方案</span>
+          <h3>學生創新大賽 2027</h3>
+          <p class="host">香港教育城</p>
+          <span class="status open">接受學校報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>同校 2–6 人</span></li>
+            <li><b>費用</b><span>官網未提及</span></li>
+            <li><b>主作品</b><span>創新方案簡報＋匯報</span></li>
+            <li><b>報名截止</b><span>2027 年 1 月 15 日</span></li>
           </ul>
         </article>
       </div>
@@ -1028,6 +1044,32 @@
             </details>
           </div>
         </article>
+
+        <article class="competition c14" data-competition="c14" data-grades="junior senior" data-contexts="pair small mid" data-eligibility="junior:pair,small,mid;senior:pair,small,mid" data-supports="innovation-plan prototype">
+          <div class="identity"><span class="num">14</span><span class="grades">中一至中六</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>學生創新大賽 2027</h3><p class="hostline">主辦：香港教育城（教城）</p></div>
+              <span class="deadline-tag">2027 年 1 月 15 日報名截止</span>
+            </div>
+            <div class="action-row" aria-label="學生創新大賽比賽詳情連結">
+              <a class="action-link primary" href="https://www.edcity.hk/home/zh-hant/sic/202627/introduction/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <span class="action-note">由學校老師推薦及經教城系統報名；每校參賽隊數不限</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>初中組中一至中三、高中組中四至中六（另設小學組小四至小六）；每隊 2–6 人，隊員須來自同一學校，並經學校老師推薦及報名，每校隊數不限。</p></div>
+              <div class="block"><h4>主題：家・校・社區</h4><p>本屆主題「創科同心・智連結：家・校・社區」，從數字家居、智慧校園、創新社區三大場景中選一，以日常生活中的真實問題切入，運用人工智能、物聯網或綠色科技等提出可行方案。</p></div>
+              <div class="block"><h4>賽制與提交</h4><p>報名時須同時提交初步提案簡報（PowerPoint，最多 40 頁）；入圍隊伍經網上匯報（10 分鐘簡報＋5 分鐘答問）後，按評審意見修訂提案，再於決賽匯報。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>決賽每組設冠、亞、季軍各一隊及優異獎三隊，另設最佳匯報隊伍、最具創意方案、最佳人工智能運用各一隊；作品展示另設「最佳展出隊伍」冠、亞、季軍及優異獎。評分按簡報及匯報表現，範疇包括創意、內容和功能、可行性、正面影響及質量。官方簡介頁未有列明參賽費用。</p>
+                <p><strong>日程：</strong>2026 年 10 月 2 日（五）起接受報名；2027 年 1 月 15 日（五）報名截止，並須同時提交初步提案；入圍隊伍須於 2027 年 4 月 18 日（日）或之前提交修訂提案；決賽隊伍於 2027 年 6 月在學與教博覽展示作品及出席頒獎禮。本賽事屬教城 PICCKS 學生獎勵計劃旗下項目，參加學生將自動參與該計劃並可獲 PICCKS 分數。</p>
+              </div>
+            </details>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1052,6 +1094,7 @@
         <li data-competition="c9"><time datetime="2026-12-31">12.31（四）</time><span class="what">報名及作品提交截止</span><span class="which">樂齡科技產品設計賽</span></li>
         <li data-competition="c9"><time datetime="2027-01-07">2027.01.07（四）</time><span class="what">結果公布</span><span class="which">樂齡科技產品設計賽</span></li>
         <li data-competition="c5"><time datetime="2027-01-08T17:00">2027.01.08（五）</time><span class="what">作品提交截止 · 17:00</span><span class="which">國民身份認同應用程式設計</span></li>
+        <li data-competition="c14"><time datetime="2027-01-15">2027.01.15（五）</time><span class="what">報名截止 · 同時提交初步提案</span><span class="which">學生創新大賽</span></li>
         <li data-competition="c6"><time datetime="2027-01-30T23:59">2027.01.30（六）</time><span class="what">設計提交截止 · 23:59</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c8"><time datetime="2027-01-30">2027.01.30（六）</time><span class="what">頒獎禮</span><span class="which">未來・無界影像</span></li>
         <li data-competition="c4"><time datetime="2027-02-28">2027.02.28（日）</time><span class="what">作品提交截止</span><span class="which">香港創科展</span></li>
@@ -1064,6 +1107,7 @@
         <li data-competition="c10"><time datetime="2027-04-15T23:59">2027.04.15（四）</time><span class="what">網上報名截止 · 23:59</span><span class="which">大灣區數字教育 STEAM 卓越獎</span></li>
         <li data-competition="c12"><time datetime="2027-04-16">2027.04.16（五）</time><span class="what">作品提交截止 · 雛型影片及簡介</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c6"><time datetime="2027-04-17">2027.04.17（六）</time><span class="what">模型航行比賽</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c14"><time datetime="2027-04-18">2027.04.18（日）</time><span class="what">修訂提案提交截止</span><span class="which">學生創新大賽</span></li>
         <li data-competition="c12"><time datetime="2027-04-30">2027.04.30（五）</time><span class="what">決賽入圍名單公布</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c6"><time datetime="2027-05-08">2027.05.08（六）</time><span class="what">展覽及頒獎</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c12"><time datetime="2027-05-24">2027.05.24–25<br>（一至二）</time><span class="what">作品展覽</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
