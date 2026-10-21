@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>中學組比賽資料總覽</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f3f5f6;
+      --paper: #ffffff;
+      --ink: #172027;
+      --muted: #56636d;
+      --line: #d7dde1;
+      --soft: #e9edef;
+      --red: #d4382f;
+      --red-soft: #fae9e6;
+      --teal: #087e78;
+      --teal-soft: #dff2ef;
+      --blue: #2267a6;
+      --blue-soft: #e4eef8;
+      --gold: #a46400;
+      --gold-soft: #f8edd6;
+      --dark: #19272e;
+      --shadow: 0 12px 30px rgba(22, 36, 44, .08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #10171b;
+        --paper: #172126;
+        --ink: #f1f5f6;
+        --muted: #b4c0c6;
+        --line: #35434a;
+        --soft: #243138;
+        --red: #ff6d62;
+        --red-soft: #452723;
+        --teal: #53c8bd;
+        --teal-soft: #173d39;
+        --blue: #70b4f0;
+        --blue-soft: #1d374d;
+        --gold: #efb65b;
+        --gold-soft: #453820;
+        --dark: #e9f0f3;
+        --shadow: 0 16px 34px rgba(0,0,0,.22);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Noto Sans HK", "PingFang HK", sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, select { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 52px 0 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      gap: 34px;
+      align-items: end;
+      padding: 18px 0 38px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.35rem, 6vw, 5.4rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 800;
+    }
+    .hero-intro { margin: 22px 0 0; max-width: 700px; color: var(--muted); font-size: 1.08rem; }
+    .snapshot {
+      border-top: 4px solid var(--red);
+      padding: 18px 0 4px;
+    }
+    .snapshot strong { display: block; font-size: 1.12rem; margin-bottom: 5px; }
+    .snapshot p { margin: 0; color: var(--muted); }
+
+    .deadline-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin: 28px 0 46px;
+      box-shadow: var(--shadow);
+    }
+    .deadline {
+      background: var(--paper);
+      padding: 22px 24px 24px;
+      min-width: 0;
+    }
+    .deadline .label { display: block; color: var(--muted); font-size: .8rem; font-weight: 600; }
+    .deadline .date { display: block; margin: 5px 0 7px; font-size: clamp(1.5rem, 3vw, 2.35rem); line-height: 1; font-weight: 800; letter-spacing: -.04em; }
+    .deadline .event { display: block; font-weight: 600; }
+    .deadline.urgent .date { color: var(--red); }
+
+    .section-head {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: end;
+      margin: 0 0 18px;
+    }
+    h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.1; letter-spacing: -.03em; }
+    .section-note { margin: 0; color: var(--muted); text-align: right; font-size: .9rem; }
+
+    .filter-panel {
+      margin: 0 0 22px;
+      padding: 16px 18px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .filter-row {
+      display: grid;
+      grid-template-columns: 94px minmax(0, 1fr);
+      gap: 12px 16px;
+      align-items: start;
+    }
+    .filter-row + .filter-row {
+      margin-top: 13px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .filter-label {
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .filterbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+    .filter {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 8px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
+    }
+    .filter:hover { border-color: var(--ink); }
+    .filter[aria-pressed="true"] { background: var(--dark); border-color: var(--dark); color: var(--bg); }
+    .filter-summary {
+      margin: 13px 0 0 110px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+    .no-results {
+      margin: 0 0 52px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      text-align: center;
+    }
+    .no-results strong { display: block; margin-bottom: 5px; }
+    .no-results p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+      margin-bottom: 52px;
+    }
+    .comp {
+      padding: 22px 20px 24px;
+      background: var(--paper);
+      position: relative;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .comp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(22, 36, 44, .14), inset 0 -4px 0 var(--accent);
+      z-index: 1;
+    }
+    .comp:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: -3px;
+      z-index: 2;
+    }
+    .comp[hidden] { display: none; }
+    .comp-code { font-weight: 800; color: var(--accent); letter-spacing: .02em; }
+    .comp h3 { margin: 16px 0 6px; font-size: 1.12rem; line-height: 1.35; letter-spacing: -.01em; }
+    .comp .host { min-height: 3.2em; margin: 0 0 20px; color: var(--muted); font-size: .84rem; }
+    .status { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: .79rem; }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .status.open { color: var(--teal); }
+    .status.closed { color: var(--muted); }
+    .facts { margin: 22px 0 0; padding: 0; list-style: none; }
+    .facts li { padding: 13px 0; border-top: 1px solid var(--line); }
+    .facts b { display: block; font-size: .74rem; color: var(--muted); margin-bottom: 2px; }
+    .facts span { font-size: .92rem; font-weight: 600; }
+    .c1 { --accent: var(--red); }
+    .c2 { --accent: var(--teal); }
+    .c3 { --accent: var(--blue); }
+    .c4 { --accent: var(--gold); }
+    .c5 { --accent: #5b6f2a; }
+    .c6 { --accent: #8a4f20; }
+    .c7 { --accent: #4f5e83; }
+    .c8 { --accent: #27716a; }
+    .c9 { --accent: #7b4f77; }
+    .c10 { --accent: #356a4b; }
+    .c11 { --accent: #a04435; }
+    .c12 { --accent: #b02a6b; }
+    .c13 { --accent: #5e4fa3; }
+    @media (prefers-color-scheme: dark) {
+      .c5 { --accent: #b5cf70; }
+      .c6 { --accent: #e5a36c; }
+      .c7 { --accent: #aab9e4; }
+      .c8 { --accent: #75c9c0; }
+      .c9 { --accent: #d3a1ce; }
+      .c10 { --accent: #83c99e; }
+      .c11 { --accent: #e09a8e; }
+      .c12 { --accent: #e58bb5; }
+      .c13 { --accent: #b3a6e8; }
+    }
+
+    .cards { display: grid; gap: 18px; }
+    .competition {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 188px minmax(0, 1fr);
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+      scroll-margin-top: 18px;
+    }
+    .competition[hidden] { display: none; }
+    .identity {
+      padding: 26px 22px;
+      color: #fff;
+      background: var(--brand);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 330px;
+    }
+    .identity .num { font-size: 3.65rem; line-height: .9; font-weight: 800; letter-spacing: -.06em; opacity: .95; }
+    .identity .grades { font-size: .84rem; font-weight: 700; letter-spacing: .04em; }
+    .competition.c1 { --brand: #c93830; }
+    .competition.c2 { --brand: #087a75; }
+    .competition.c3 { --brand: #215f98; }
+    .competition.c4 { --brand: #9b6207; }
+    .competition.c5 { --brand: #5b6f2a; }
+    .competition.c6 { --brand: #8a4f20; }
+    .competition.c7 { --brand: #4f5e83; }
+    .competition.c8 { --brand: #27716a; }
+    .competition.c9 { --brand: #7b4f77; }
+    .competition.c10 { --brand: #356a4b; }
+    .competition.c11 { --brand: #a04435; }
+    .competition.c12 { --brand: #b02a6b; }
+    .competition.c13 { --brand: #5e4fa3; }
+    .body { padding: 26px 28px 30px; min-width: 0; }
+    .topline { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
+    .body h3 { margin: 0; font-size: clamp(1.25rem, 2.5vw, 1.72rem); line-height: 1.28; letter-spacing: -.025em; }
+    .hostline { margin: 5px 0 0; color: var(--muted); font-size: .88rem; }
+    .deadline-tag {
+      flex: 0 0 auto;
+      background: var(--soft);
+      padding: 8px 11px;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    .deadline-tag.hot { background: var(--red-soft); color: var(--red); }
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      margin-top: 17px;
+    }
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 700;
+      line-height: 1.3;
+      transition: border-color .18s ease, background .18s ease, color .18s ease;
+    }
+    .action-link::after { content: "↗"; font-size: .9em; }
+    .action-link:hover,
+    .action-link:focus-visible { border-color: var(--brand); color: var(--brand); }
+    .action-link.primary { background: var(--dark); border-color: var(--dark); color: var(--bg); }
+    .action-link.primary:hover,
+    .action-link.primary:focus-visible { background: var(--brand); border-color: var(--brand); color: #fff; }
+    .action-note { color: var(--muted); font-size: .78rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 25px;
+    }
+    .block h4 { margin: 0 0 8px; font-size: .8rem; color: var(--brand); }
+    .block p { margin: 0; font-size: .92rem; }
+    .block ul { margin: 0; padding-left: 1.1em; font-size: .92rem; }
+    .block li + li { margin-top: 5px; }
+    details { margin-top: 22px; border-top: 1px solid var(--line); }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 0 0;
+      font-weight: 700;
+      font-size: .9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.35rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    .detail-content { padding-top: 14px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+    .detail-content p { margin: 0; font-size: .9rem; color: var(--muted); }
+    .detail-content strong { color: var(--ink); }
+
+    .timeline-wrap { margin-top: 54px; }
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+      border-top: 1px solid var(--line);
+    }
+    .timeline li {
+      display: grid;
+      grid-template-columns: 130px 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline li[hidden] { display: none; }
+    .timeline time { font-weight: 800; letter-spacing: -.015em; }
+    .timeline .what { font-weight: 600; }
+    .timeline .which { color: var(--muted); font-size: .86rem; text-align: right; }
+    .timeline .passed { color: var(--muted); }
+    .warning {
+      margin-top: 18px;
+      padding: 16px 18px;
+      background: var(--gold-soft);
+      color: var(--ink);
+      font-size: .88rem;
+    }
+    .warning strong { color: var(--gold); }
+    .warning p { margin: 0; }
+    .warning p + p { margin-top: 7px; }
+
+    .footer-note {
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    @media (max-width: 940px) {
+      .compare { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .block:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 720px) {
+      .page { width: min(100% - 28px, 1180px); padding-top: 28px; }
+      .hero { grid-template-columns: 1fr; gap: 26px; }
+      h1 { font-size: clamp(2.55rem, 12vw, 3.2rem); line-height: 1.02; }
+      .snapshot { max-width: none; }
+      .deadline-strip { grid-template-columns: 1fr; }
+      .deadline { display: grid; grid-template-columns: 95px 1fr; gap: 3px 15px; align-items: center; }
+      .deadline .label { grid-column: 1; }
+      .deadline .date { grid-column: 1; grid-row: 2 / 4; font-size: 1.7rem; }
+      .deadline .event { grid-column: 2; grid-row: 2 / 4; }
+      .section-head { align-items: start; flex-direction: column; gap: 7px; }
+      .section-note { text-align: left; }
+      .filter-panel { padding: 14px; }
+      .filter-row { grid-template-columns: 1fr; gap: 7px; }
+      .filter-label { padding-top: 0; }
+      .filter-summary { margin-left: 0; }
+      .compare { grid-template-columns: 1fr; }
+      .comp .host { min-height: auto; }
+      .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+      .competition { grid-template-columns: 1fr; }
+      .identity { min-height: 0; padding: 16px 20px; flex-direction: row; align-items: center; }
+      .identity .num { font-size: 2.2rem; }
+      .body { padding: 22px 20px 25px; }
+      .topline { flex-direction: column; gap: 12px; }
+      .deadline-tag { align-self: flex-start; }
+      .grid, .detail-content { grid-template-columns: 1fr; gap: 19px; }
+      .block:last-child { grid-column: auto; }
+      .timeline li { grid-template-columns: 105px 1fr; gap: 10px 16px; }
+      .timeline .which { grid-column: 2; text-align: left; margin-top: -6px; }
+    }
+    @media (max-width: 420px) {
+      .deadline { grid-template-columns: 84px 1fr; }
+      .facts { grid-template-columns: 1fr; }
+      .timeline li { grid-template-columns: 100px 1fr; }
+      .timeline time { font-size: .86rem; line-height: 1.4; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+      .comp:hover { transform: none; }
+    }
+    @media print {
+      :root { --bg: #fff; --paper: #fff; --ink: #000; --muted: #333; --line: #aaa; }
+      .page { width: 100%; padding: 0; }
+      .filter-panel { display: none; }
+      .competition, .deadline-strip { box-shadow: none; break-inside: avoid; }
+      details > * { display: block !important; }
+      summary::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-labelledby="main-title">
+      <div>
+        <h1 id="main-title">十三項中學創科比賽，一頁比較</h1>
+        <p class="hero-intro">由參賽人數、作品形式到獎項與截止日期，先看最緊急的，再按年級、組隊情境和所需支援篩選合適機會。</p>
+      </div>
+      <aside class="snapshot" aria-label="資料狀態">
+        <strong>2026 年 10 月 19 日更新</strong>
+        <p>新增氫建未來．小紅花 AI 向善挑戰賽及香港創科高峰會；AlipayHK 已截止報名。</p>
+      </aside>
+    </section>
+
+    <section class="deadline-strip" aria-label="最近三個截止日期">
+      <div class="deadline urgent">
+        <span class="label">最先截止</span>
+        <span class="date">10.30</span>
+        <span class="event">夢溪 2026 報名<br>星期五</span>
+      </div>
+      <div class="deadline urgent">
+        <span class="label">翌日截止</span>
+        <span class="date">10.31</span>
+        <span class="event">航天築夢學校報名<br>星期六 23:59</span>
+      </div>
+      <div class="deadline">
+        <span class="label">下一個截止</span>
+        <span class="date">11.06</span>
+        <span class="event">小紅花 AI 向善挑戰賽報名<br>星期五</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="compare-title">
+      <div class="section-head">
+        <h2 id="compare-title">先用 30 秒比較</h2>
+        <p class="section-note">按年級、組隊情境和所需支援交叉篩選</p>
+      </div>
+      <div class="filter-panel" aria-label="比賽篩選器">
+        <div class="filter-row">
+          <span class="filter-label" id="grade-label">年級</span>
+          <div class="filterbar" role="group" aria-labelledby="grade-label" data-filter-group="grades">
+            <button class="filter" type="button" data-value="all" aria-pressed="true">全部</button>
+            <button class="filter" type="button" data-value="junior" aria-pressed="false">初中</button>
+            <button class="filter" type="button" data-value="senior" aria-pressed="false">高中</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label" id="context-label">組隊情境</span>
+          <div class="filterbar" role="group" aria-labelledby="context-label" data-filter-group="contexts">
+            <button class="filter" type="button" data-value="all" aria-pressed="true">不限</button>
+            <button class="filter" type="button" data-value="solo" aria-pressed="false">個人可參加</button>
+            <button class="filter" type="button" data-value="pair" aria-pressed="false">2 人小隊</button>
+            <button class="filter" type="button" data-value="small" aria-pressed="false">3–4 人小隊</button>
+            <button class="filter" type="button" data-value="mid" aria-pressed="false">5–6 人小隊</button>
+            <button class="filter" type="button" data-value="large" aria-pressed="false">6 人或以上校隊</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label" id="support-label">所需支援</span>
+          <div class="filterbar" role="group" aria-labelledby="support-label" data-filter-group="supports">
+            <button class="filter" type="button" data-value="all" aria-pressed="true">不限</button>
+            <button class="filter" type="button" data-value="ai-video" aria-pressed="false">AI 影片製作</button>
+            <button class="filter" type="button" data-value="engineering" aria-pressed="false">工程硬件</button>
+            <button class="filter" type="button" data-value="ux" aria-pressed="false">UX 設計</button>
+            <button class="filter" type="button" data-value="app" aria-pressed="false">應用程式設計</button>
+            <button class="filter" type="button" data-value="prototype" aria-pressed="false">原型與匯報</button>
+            <button class="filter" type="button" data-value="gerontech-plan" aria-pressed="false">樂齡科技產品設計企劃書撰寫</button>
+            <button class="filter" type="button" data-value="steam-production" aria-pressed="false">STEAM 作品製作支援</button>
+            <button class="filter" type="button" data-value="design-creation" aria-pressed="false">設計創作支援</button>
+            <button class="filter" type="button" data-value="ai-carbon" aria-pressed="false">AI＋碳中和作品製作支援</button>
+            <button class="filter" type="button" data-value="ai-solution" aria-pressed="false">AI 方案製作支援</button>
+          </div>
+        </div>
+        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 13 項比賽</p>
+      </div>
+
+      <div class="compare" id="compare-grid">
+        <article class="comp c1" data-competition="c1" data-grades="junior senior" data-contexts="solo pair" data-eligibility="junior:solo;senior:solo,pair" data-supports="ai-video">
+          <span class="comp-code">01 · AI 影片</span>
+          <h3>夢溪 2026</h3>
+          <p class="host">新界青聯發展基金會</p>
+          <span class="status open">接受報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>初中 1 人<br>高中 1–2 人</span></li>
+            <li><b>費用</b><span>章程未提及</span></li>
+            <li><b>主作品</b><span>35 秒內 AI 影片</span></li>
+            <li><b>報名截止</b><span>10 月 30 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c2" data-competition="c2" data-grades="junior senior" data-contexts="large" data-eligibility="junior:large;senior:large" data-supports="engineering prototype">
+          <span class="comp-code">02 · 工程實作</span>
+          <h3>航天築夢</h3>
+          <p class="host">香港航天科技教育聯盟</p>
+          <span class="status open">接受學校報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>每校 6 人或以上</span></li>
+            <li><b>費用</b><span>全免</span></li>
+            <li><b>主作品</b><span>火星基地原型＋海報</span></li>
+            <li><b>報名截止</b><span>10 月 31 日 23:59</span></li>
+          </ul>
+        </article>
+        <article class="comp c3" data-competition="c3" data-grades="junior senior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small;senior:solo,pair,small" data-supports="ux">
+          <span class="comp-code">03 · UX 設計</span>
+          <h3>AlipayHK αdvice</h3>
+          <p class="host">AlipayHK</p>
+          <span class="status closed">報名已截止</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>1–4 人</span></li>
+            <li><b>費用</b><span>官網未提及</span></li>
+            <li><b>主作品</b><span>三大主題 UX 方案</span></li>
+            <li><b>作品截止</b><span>11 月 13 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c4" data-competition="c4" data-grades="junior senior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small;senior:solo,pair,small" data-supports="prototype">
+          <span class="comp-code">04 · 創科原型</span>
+          <h3>香港創科展</h3>
+          <p class="host">香港創新基金</p>
+          <span class="status open">接受學校提名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>1–4 人</span></li>
+            <li><b>費用</b><span>官網未提及</span></li>
+            <li><b>主作品</b><span>材料＋影片＋原型</span></li>
+            <li><b>報名截止</b><span>11 月 29 日 23:59</span></li>
+          </ul>
+        </article>
+        <article class="comp c5" data-competition="c5" data-grades="junior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small" data-supports="app ux prototype">
+          <span class="comp-code">05 · 應用程式</span>
+          <h3>國民身份認同應用程式設計比賽</h3>
+          <p class="host">香港教育城</p>
+          <span class="status open">接受學校報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>1–4 人</span></li>
+            <li><b>年級</b><span>只設初中組</span></li>
+            <li><b>主作品</b><span>程式構想＋簡報</span></li>
+            <li><b>報名截止</b><span>12 月 21 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c6" data-competition="c6" data-grades="junior senior" data-contexts="small" data-eligibility="junior:small;senior:small" data-supports="engineering prototype">
+          <span class="comp-code">06 · 海事工程</span>
+          <h3>STEM × 海洋航行器</h3>
+          <p class="host">香港海事科技學會、AiTLE</p>
+          <span class="status open">接受報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>同校 4 人</span></li>
+            <li><b>支援</b><span>訓練＋材料費補助</span></li>
+            <li><b>主作品</b><span>船模設計與航行</span></li>
+            <li><b>作品截止</b><span>2027 年 1 月 30 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c7" data-competition="c7" data-grades="junior senior" data-contexts="solo pair small mid" data-eligibility="junior:solo,pair,small,mid;senior:solo,pair,small,mid" data-supports="engineering prototype">
+          <span class="comp-code">07 · 道路安全</span>
+          <h3>道路安全 STEAM 比賽</h3>
+          <p class="host">道路安全議會</p>
+          <span class="status open">接受報名及交件</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>同校 1–6 人</span></li>
+            <li><b>教師</b><span>1 名顧問</span></li>
+            <li><b>主作品</b><span>方案簡報＋原型影片</span></li>
+            <li><b>截止</b><span>2027 年 3 月 31 日 23:59</span></li>
+          </ul>
+        </article>
+        <article class="comp c8" data-competition="c8" data-grades="junior senior" data-contexts="solo pair" data-eligibility="junior:solo,pair;senior:solo,pair" data-supports="ai-video">
+          <span class="comp-code">08 · Gen AI 短片</span>
+          <h3>未來・無界影像</h3>
+          <p class="host">HKtag（香港科技創新促進組）</p>
+          <span class="status open">接受報名及交件</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>個人或最多 2 人</span></li>
+            <li><b>年級</b><span>本地初中及高中</span></li>
+            <li><b>主作品</b><span>Gen AI 生成短片</span></li>
+            <li><b>報名及交件</b><span>11 月 8 日截止</span></li>
+          </ul>
+        </article>
+        <article class="comp c9" data-competition="c9" data-grades="junior senior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small;senior:solo,pair,small" data-supports="gerontech-plan">
+          <span class="comp-code">09 · 樂齡科技</span>
+          <h3>樂齡科技產品設計賽</h3>
+          <p class="host">香港科創及文化協會</p>
+          <span class="status open">接受報名及交件</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>個人或最多 4 人</span></li>
+            <li><b>年級</b><span>初中及高中組</span></li>
+            <li><b>主作品</b><span>樂齡科技產品設計書</span></li>
+            <li><b>報名及交件</b><span>12 月 31 日截止</span></li>
+          </ul>
+        </article>
+        <article class="comp c10" data-competition="c10" data-grades="junior senior" data-contexts="solo pair small mid" data-eligibility="junior:solo,pair,small,mid;senior:solo,pair,small,mid" data-supports="steam-production">
+          <span class="comp-code">10 · STEAM 專題</span>
+          <h3>大灣區數字教育 STEAM 卓越獎</h3>
+          <p class="host">HKNETEA</p>
+          <span class="status open">接受網上報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>1–5 人</span></li>
+            <li><b>年級</b><span>初中及高中組</span></li>
+            <li><b>主作品</b><span>六大類別 STEAM 專題</span></li>
+            <li><b>報名截止</b><span>2027 年 4 月 15 日 23:59</span></li>
+          </ul>
+        </article>
+        <article class="comp c11" data-competition="c11" data-grades="junior senior" data-contexts="solo" data-eligibility="junior:solo;senior:solo" data-supports="design-creation">
+          <span class="comp-code">11 · 節日設計</span>
+          <h3>聖誕節創意設計比賽</h3>
+          <p class="host">香港科創及文化協會</p>
+          <span class="status open">接受報名及交件</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>個人參賽</span></li>
+            <li><b>年級</b><span>初中及高中組</span></li>
+            <li><b>主作品</b><span>WhatsApp 貼圖及／或賀卡</span></li>
+            <li><b>報名及交件</b><span>12 月 4 日截止</span></li>
+          </ul>
+        </article>
+        <article class="comp c12" data-competition="c12" data-grades="senior" data-contexts="pair small mid" data-eligibility="senior:pair,small,mid" data-supports="ai-carbon">
+          <span class="comp-code">12 · AI 向善</span>
+          <h3>氫建未來．小紅花 AI 向善挑戰賽</h3>
+          <p class="host">成長希望基金會</p>
+          <span class="status open">接受報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>每隊 2–5 人</span></li>
+            <li><b>年級</b><span>只限高中組</span></li>
+            <li><b>主作品</b><span>AI 作品雛型影片及簡介</span></li>
+            <li><b>報名截止</b><span>11 月 6 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c13" data-competition="c13" data-grades="junior senior" data-contexts="pair small" data-eligibility="junior:pair,small;senior:pair,small" data-supports="ai-solution">
+          <span class="comp-code">13 · AI 方案</span>
+          <h3>香港創科高峰會</h3>
+          <p class="host">GYCSI、Bright Future Charitable Foundation、Bright Future Engineering Talent Hub</p>
+          <span class="status open">接受報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>每隊 2–4 人</span></li>
+            <li><b>費用</b><span>全免</span></li>
+            <li><b>主作品</b><span>AI 解決真實問題方案</span></li>
+            <li><b>報名截止</b><span>11 月 11 日</span></li>
+          </ul>
+        </article>
+      </div>
+      <div class="no-results" id="no-results" hidden>
+        <strong>暫時沒有同時符合所有條件的比賽</strong>
+        <p>可將其中一項改回「不限」或「全部」，再查看其他選擇。</p>
+      </div>
+    </section>
+
+    <section id="detail-section" aria-labelledby="detail-title">
+      <div class="section-head">
+        <h2 id="detail-title">逐項看清楚</h2>
+        <p class="section-note">展開「完整獎項與時間」查看更多</p>
+      </div>
+
+      <div class="cards" id="detail-grid">
+        <article class="competition c1" data-competition="c1" data-grades="junior senior" data-contexts="solo pair" data-eligibility="junior:solo;senior:solo,pair" data-supports="ai-video">
+          <div class="identity"><span class="num">01</span><span class="grades">F1–F6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>夢溪 2026 青少年創科實踐挑戰賽</h3><p class="hostline">主辦：新界青聯發展基金會</p></div>
+              <span class="deadline-tag hot">10 月 30 日報名截止</span>
+            </div>
+            <div class="action-row" aria-label="夢溪 2026 比賽及報名連結">
+              <a class="action-link" href="https://drive.google.com/file/d/1s0ph9dunYODXl5k3w-rICJvADCbT_37F/view" target="_blank" rel="noopener noreferrer">比賽章程</a>
+              <a class="action-link primary" href="https://forms.gle/CmJBarQHBe7a6LP49" target="_blank" rel="noopener noreferrer">立即報名</a>
+              <span class="action-note">章程第 6 頁的 QR Code 亦會開啟此表格</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>初中組 · F1–F3</h4><p>個人賽。選一個海洋科技情境，製作 35 秒內 AI 影片；另附 200 字作品說明。</p></div>
+              <div class="block"><h4>高中組 · F4–F6</h4><p>每隊 1–2 人。從五大國家科技主題選一項，製作 35 秒內介紹影片；另交團隊合照及 30 秒內團隊介紹片。</p></div>
+              <div class="block"><h4>作品規格</h4><ul><li>MP4、100MB 內、720p 或以上</li><li>初中要有清晰主角／視角</li><li>高中扣連香港回歸 30 週年可加分</li></ul></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>每組冠軍書券 $2,000、亞軍 $1,500、季軍 $600、殿軍 3 名各 $300；另有證書及獎座。</p>
+                <p><strong>日程：</strong>11 月 8 日（日）交作品；11 月 21 日（六）前公布入圍；12 月 6 日（日）總決賽。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c2" data-competition="c2" data-grades="junior senior" data-contexts="large" data-eligibility="junior:large;senior:large" data-supports="engineering prototype">
+          <div class="identity"><span class="num">02</span><span class="grades">S1–S6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>「航天築夢」AI 航天工程挑戰賽</h3><p class="hostline">主辦：香港航天科技教育聯盟</p></div>
+              <span class="deadline-tag hot">10 月 31 日 23:59</span>
+            </div>
+            <div class="action-row" aria-label="航天築夢比賽及報名連結">
+              <a class="action-link" href="https://www.hkstarcatcher.com/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://www.hkstarcatcher.com/apply.html" target="_blank" rel="noopener noreferrer">學校報名</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>參賽人數</h4><p>每校 6 人或以上，可跨年級組隊；分工涵蓋隊長統籌、技術與硬件、文宣視覺及展示。</p></div>
+              <div class="block"><h4>火星基地任務</h4><p>提交 A0 研究海報及原型示範影片；要解釋 AI 所處理的難題、感測器資料與分析判斷方式。</p></div>
+              <div class="block"><h4>支援與器材</h4><p>費用全免，另有免費教師工作坊。每校抽籤獲分配一款官方硬件套件，預計 2027 年 1 月領取。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>硬件選項：</strong>3U 立方衛星、智能火星探測車或智能火箭模型。另設太空任務標誌設計賽道，每校提交 1 份優勝作品。</p>
+                <p><strong>獎項及日程：</strong>一、二、三等獎、優異獎、最具創意大獎及公眾投票；2027 年 3 月 31 日（三）交作品，總決賽於 2027 年 5 月舉行。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c3" data-competition="c3" data-grades="junior senior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small;senior:solo,pair,small" data-supports="ux">
+          <div class="identity"><span class="num">03</span><span class="grades">中一至中六</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>AlipayHK αdvice 青年科創 UX 設計比賽</h3><p class="hostline">主辦：AlipayHK</p></div>
+              <span class="deadline-tag">報名已截止</span>
+            </div>
+            <div class="action-row" aria-label="AlipayHK αdvice 比賽及報名連結">
+              <a class="action-link" href="https://www.alipayhk.com/zh/alipayhk_advice/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link" href="https://www.alipayhk.com/zh/alipayhk_advice/" target="_blank" rel="noopener noreferrer">報名頁（已截止）</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>參賽人數</h4><p>個人或同校最多 4 人組隊，另加 1 名指導老師；對象為本地全日制中學及指定大灣區中學學生。</p></div>
+              <div class="block"><h4>三大題目</h4><ul><li>小店營銷</li><li>社區樂齡</li><li>個人理財</li></ul></div>
+              <div class="block"><h4>發展機會</h4><p>三甲可成為「初級首席創想官」，參與工作影子計劃及杭州交流學習團；15 強獲證書，另設人氣獎。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>日程：</strong>10 月 10 日（六）工作坊；11 月 13 日（五）交作品；12 月 8–12 日公開投票；12 月 12 日（六）決賽暨頒獎。</p>
+                <p><strong>日期提示：</strong>工作影子計劃的官方資料有兩個版本：官網寫 2027 年 1–3 月，新聞稿寫 2027 年 7 月；以主辦方最新通知為準。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c4" data-competition="c4" data-grades="junior senior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small;senior:solo,pair,small" data-supports="prototype">
+          <div class="identity"><span class="num">04</span><span class="grades">F1–F6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>香港創科展 2026–2027（第六屆）</h3><p class="hostline">主辦：香港創新基金</p></div>
+              <span class="deadline-tag">11 月 29 日 23:59</span>
+            </div>
+            <div class="action-row" aria-label="香港創科展比賽及報名連結">
+              <a class="action-link" href="https://www.hksciencefair.org.hk/" target="_blank" rel="noopener noreferrer">比賽官網</a>
+              <a class="action-link primary" href="https://hksfr.awardsplatform.com/" target="_blank" rel="noopener noreferrer">學校報名</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>參賽人數</h4><p>初中 F1–F3、高中 F4–F6；每隊 1–4 名學生，由 1 名全職教師指導，並須經學校提名。</p></div>
+              <div class="block"><h4>完整流程</h4><p>申請及提交材料／影片後，入圍隊伍參與原型檢討、Pitching 及模擬 Pitching 工作坊，再到會展展覽及評審。</p></div>
+              <div class="block"><h4>主要獎項</h4><p>最多 100 隊獲入圍獎 Merit；初、高中各設金、銀、銅獎，另有人氣獎及檢測認證特別獎。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎金：</strong>各組金／銀／銅獎學生獎金為 $10,000／$8,000／$5,000；教師 $5,000／$4,000／$2,500；學校 $100,000／$75,000／$50,000。</p>
+                <p><strong>高中專屬及日程：</strong>卓越研究獎最多 3 隊；2027 年 2 月 28 日（日）交作品、4 月 2 日（五）公布入圍、6 月 26–27 日（六至日）展覽。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c5" data-competition="c5" data-grades="junior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small" data-supports="app ux prototype">
+          <div class="identity"><span class="num">05</span><span class="grades">F1–F3</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>國民身份認同應用程式設計比賽 2026/27</h3><p class="hostline">主辦：香港教育城</p></div>
+              <span class="deadline-tag">12 月 21 日報名截止</span>
+            </div>
+            <div class="action-row" aria-label="國民身份認同應用程式設計比賽及報名連結">
+              <a class="action-link" href="https://student.edcity.hk/pri/zh-hant/piccks-post/202627/nationalidentity/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://student.edcity.hk/pri/zh-hant/piccks-post/202627/nationalidentity/" target="_blank" rel="noopener noreferrer">報名指引</a>
+              <span class="action-note">由學校老師經教城系統遞交名單及學生資料</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>參賽資格</h4><p>初中 F1–F3，個人或最多 4 人組隊；隊員可同校或來自同一辦學團體，並須獲老師推薦。</p></div>
+              <div class="block"><h4>初賽作品</h4><p>提交 300 字內應用程式簡介 PDF，以及涵蓋理念、對象、操作示範與身份認同成效的 PowerPoint。</p></div>
+              <div class="block"><h4>所需支援</h4><p>適合有應用程式構想、介面／視覺原型及簡報能力的隊伍；決賽須進行 15 分鐘網上評審面試。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>冠、亞、季軍及 5 個優異獎，另設最具創意、最豐富內容、最清晰表達及學校參與獎；每位參加者獲證書。</p>
+                <p><strong>日程：</strong>2026 年 12 月 21 日（一）報名截止；2027 年 1 月 8 日（五）17:00 前交作品；4 月 10 日（六）網上決賽面試。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c6" data-competition="c6" data-grades="junior senior" data-contexts="small" data-eligibility="junior:small;senior:small" data-supports="engineering prototype">
+          <div class="identity"><span class="num">06</span><span class="grades">中學組</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>AiTLE × HKIMT 2026–27 STEM × 海洋航行器設計及製作比賽</h3><p class="hostline">主辦：香港海事科技學會｜協辦：AiTLE</p></div>
+              <span class="deadline-tag">2027 年 1 月 30 日交設計</span>
+            </div>
+            <div class="action-row" aria-label="海洋航行器設計及製作比賽及報名連結">
+              <a class="action-link" href="https://sites.google.com/view/2026-27hkimtstem" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe8yBfApvboUV7nG62I-8t-7ZSomNqDP_vN55Qk0Llmc7vYlg/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">立即報名</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>參賽人數</h4><p>中學組每隊 4 名同校學生。官方資料未列明指導教師要求及獨立報名截止日期。</p></div>
+              <div class="block"><h4>三階段挑戰</h4><p>先交航行器設計，再參與模型速度／任務航行計時比賽，最後進行模型展覽。</p></div>
+              <div class="block"><h4>支援與投入</h4><p>大會提供基礎訓練及材料費補助；中學另有航行控制、AI 自學習及物件識別工作坊。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項與費用：</strong>官方頁暫未列出獎項內容及參賽費用，宜報名前向主辦方確認。</p>
+                <p><strong>日程：</strong>2027 年 1 月 30 日（六）23:59 前交設計；3 月 20 日（六）場地實測；4 月 17 日（六）比賽；5 月 8 日（六）展覽及頒獎。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c7" data-competition="c7" data-grades="junior senior" data-contexts="solo pair small mid" data-eligibility="junior:solo,pair,small,mid;senior:solo,pair,small,mid" data-supports="engineering prototype">
+          <div class="identity"><span class="num">07</span><span class="grades">F1–F6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>道路安全 STEAM 比賽 2026–27</h3><p class="hostline">主辦：道路安全議會</p></div>
+              <span class="deadline-tag">2027 年 3 月 31 日 23:59</span>
+            </div>
+            <div class="action-row" aria-label="道路安全 STEAM 比賽及報名連結">
+              <a class="action-link" href="https://roadsafetysteam.hk/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://forms.gle/c7wMEyGxvihR2T7ZA" target="_blank" rel="noopener noreferrer">報名及交件</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>參賽人數</h4><p>全日制 F1–F6 學生，同校 1–6 人一隊，加 1 名教師顧問；每位學生只可參加一隊。</p></div>
+              <div class="block"><h4>提交內容</h4><p>項目簡介、最多 15 頁方案簡報及 3 分鐘原型影片；網上評審毋須提交實物。</p></div>
+              <div class="block"><h4>四大主題</h4><p>行人安全、道路安全城教育、單車安全及分心駕駛預防；另有三場粵語能力建設工作坊。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>中學組獎項：</strong>冠、亞、季軍書券 $10,000／$7,000／$4,500；5 個優異獎各 $2,500；另有最佳參與獎、最佳 AI 獎及全員電子證書。</p>
+                <p><strong>日程與費用：</strong>2027 年 3 月 31 日（三）23:59 報名兼交件；入圍隊伍於 5 月實體匯報及答問。官方資料未提及參賽費用。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c8" data-competition="c8" data-grades="junior senior" data-contexts="solo pair" data-eligibility="junior:solo,pair;senior:solo,pair" data-supports="ai-video">
+          <div class="identity"><span class="num">08</span><span class="grades">初中及高中</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>未來・無界影像｜Gen AI 短片創作大賽</h3><p class="hostline">主辦：HKtag（香港科技創新促進組）</p></div>
+              <span class="deadline-tag hot">11 月 8 日報名及交件截止</span>
+            </div>
+            <div class="action-row" aria-label="未來・無界影像 Gen AI 短片創作大賽官方連結">
+              <a class="action-link primary" href="https://events.hk-tag.org/wp-content/uploads/2026/09/genai-video-competition.html" target="_blank" rel="noopener noreferrer">比賽詳情及報名</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>中學組供本地初中及高中學生參加，可個人或最多 2 人組隊；鼓勵跨校、跨年級或跨界別合作。賽事另設小學組、專上及青年組、公開組。</p></div>
+              <div class="block"><h4>四大主題</h4><ul><li>青年發展</li><li>數碼共融</li><li>反詐騙與媒體素養</li><li>2035 年的香港想像</li></ul></div>
+              <div class="block"><h4>提交內容</h4><p>以生成式 AI 為主要創作工具，提交 MP4 完成版影片（1080p 或以上）、故事分鏡、230 字內故事構思及主題理念，以及 150 字內 Gen AI 工具與創作流程簡述。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>中學組獎項：</strong>冠軍、一等獎 3 名、二等獎 5 名、三等獎 10 名、優異獎 15 名。</p>
+                <p><strong>日程：</strong>2026 年 9 月 1 日至 11 月 8 日報名及作品提交；12 月 31 日（四）決賽作品最終提交；2027 年 1 月 30 日（六）頒獎禮。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c9" data-competition="c9" data-grades="junior senior" data-contexts="solo pair small" data-eligibility="junior:solo,pair,small;senior:solo,pair,small" data-supports="gerontech-plan">
+          <div class="identity"><span class="num">09</span><span class="grades">S.1–S.6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>樂齡科技產品設計賽</h3><p class="hostline">主辦：香港科創及文化協會（Hong Kong STEAM and Culture Association）</p></div>
+              <span class="deadline-tag">12 月 31 日報名及交件截止</span>
+            </div>
+            <div class="action-row" aria-label="樂齡科技產品設計賽官方及報名連結">
+              <a class="action-link" href="https://hkscea.com/2026/10/04/%e6%a8%82%e9%bd%a1%e7%a7%91%e6%8a%80%e7%94%a2%e5%93%81%e8%a8%ad%e8%a8%88%e8%b3%bd/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://forms.gle/ps4aMYSriZ1gxU7G8" target="_blank" rel="noopener noreferrer">個人報名及交件</a>
+              <span class="action-note">查詢：94282631｜info@hkscea.com</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>初中組 S.1–S.3、高中組 S.4–S.6；可個人或最多 4 人組隊。組員可來自不同組別，整隊以較高組別參賽。賽事另設 25 歲以下大專組。</p></div>
+              <div class="block"><h4>題材與提交要求</h4><p>以「樂齡科技」為題，完成產品設計書內所有部分並上傳計劃書；可電腦編輯或列印後手寫，以中文或英文完成。</p></div>
+              <div class="block"><h4>評分準則</h4><ul><li>設計靈感 50%</li><li>產品構想 20%</li><li>產品說明 30%</li></ul></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>每組別獎項：</strong>冠軍、亞軍、季軍各一名；金獎（90 分或以上）、銀獎（80 分或以上）、銅獎（65 分或以上），其餘作品獲積極參與獎。獲獎者可按協會得獎電郵訂製獎狀及獎盃。</p>
+                <p><strong>報名與日程：</strong>個人經 Google 表單上傳作品；學校／團體如遞交多於一份作品，須以 Excel 登記、將作品上傳至設為「任何擁有連結者可開啟」的 Google Drive，於 Excel 加入對應網址後電郵至 info@hkscea.com。2026 年 12 月 31 日（四）報名及作品提交截止；2027 年 1 月 7 日（四）公布結果。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c10" data-competition="c10" data-grades="junior senior" data-contexts="solo pair small mid" data-eligibility="junior:solo,pair,small,mid;senior:solo,pair,small,mid" data-supports="steam-production">
+          <div class="identity"><span class="num">10</span><span class="grades">初中及高中</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>第九屆大灣區數字教育 STEAM 卓越獎 2027（香港）學生組別</h3><p class="hostline">主辦：HKNETEA</p></div>
+              <span class="deadline-tag">2027 年 4 月 15 日 23:59</span>
+            </div>
+            <div class="action-row" aria-label="大灣區數字教育 STEAM 卓越獎官方及報名連結">
+              <a class="action-link" href="https://www.hknetea.org/" target="_blank" rel="noopener noreferrer">官方詳情</a>
+              <a class="action-link primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeLYLBwykdk9-Oj3bl02whZYuJwg5tKqwQPvTgxC4DwoXQjTA/viewform" target="_blank" rel="noopener noreferrer">網上報名</a>
+              <span class="action-note">查詢：李先生 2869 6603｜info@hknetea.org</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>學生組別設小學、初中、高中、大專大學、研究生及制服團隊。每隊設 1 名隊長，另可填報參賽者 2–5，最多 5 人；須註明同校、不同學校或制服團隊。</p></div>
+              <div class="block"><h4>六大主題類別</h4><ul><li>資訊及通訊科技 ICT</li><li>生命與健康 Life and Health</li><li>新材料與新能源 New Materials and New Energy</li><li>科普視頻 Science Video</li><li>扶輪淨水 Rotary Water Purification</li><li>藝術科技 Art Tech</li></ul></div>
+              <div class="block"><h4>報名準備</h4><p>經 Google 表單報名，須填學校全名（作獲獎資料及獎盃依據）、負責導師或家長及隊員資料，上傳附照片的有效學生證，並完成申報表四項聲明。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>現有官方報名資料未列出學生組別獎項詳情，宜向主辦方查詢最新安排。</p>
+                <p><strong>日程：</strong>2027 年 4 月 15 日（四）23:59 報名截止。英文名稱：The 9th Greater Bay Area Digital Education STEAM Excellence Award 2027 (HKSAR) Students Stream。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c11" data-competition="c11" data-grades="junior senior" data-contexts="solo" data-eligibility="junior:solo;senior:solo" data-supports="design-creation">
+          <div class="identity"><span class="num">11</span><span class="grades">S.1–S.6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>聖誕節創意設計比賽</h3><p class="hostline">主辦：香港科創及文化協會（Hong Kong STEAM and Culture Association）</p></div>
+              <span class="deadline-tag">12 月 4 日報名及交件截止</span>
+            </div>
+            <div class="action-row" aria-label="聖誕節創意設計比賽官方及報名連結">
+              <a class="action-link" href="https://hkscea.com/2026/09/29/%e8%81%96%e8%aa%95%e7%af%80%e5%89%b5%e6%84%8f%e8%a8%ad%e8%a8%88%e6%af%94%e8%b3%bd/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://docs.google.com/forms/d/e/1FAIpQLScnTf4106-sgD7MoB2HqtzN13FA6l4yMC4rzZOpS6ga-O9ouQ/viewform?usp=sharing&amp;ouid=101360667789603103807" target="_blank" rel="noopener noreferrer">個人報名及交件</a>
+              <span class="action-note">查詢：94282631｜info@hkscea.com</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>初中組 S.1–S.3、高中組 S.4–S.6，以個人為單位參賽，每份作品須獨立填寫報名表。學校／團體可批量提交多份作品；官方頁面未另載組隊規則。賽事另設幼稚園、初小、高小及公開組。</p></div>
+              <div class="block"><h4>題材與作品要求</h4><p>以聖誕佳節為題，上傳 WhatsApp 貼圖及／或賀卡；可參加多項設計項目，但每項須獨立報名。貼圖須為 512 × 512 像素；賀卡可自行決定是否預留書寫空間，並可使用 AI 製作。</p></div>
+              <div class="block"><h4>評分與內容規範</h4><ul><li>整體美感 50%</li><li>節日特色 30%</li><li>完成度 20%</li><li>不得涉及色情、暴力、政治、不良意識或商業宣傳</li></ul></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>每組別獎項：</strong>冠軍、亞軍、季軍各一名；金獎（90 分以上）、銀獎（80 分以上）、銅獎（65 分以上），其餘作品獲積極參與獎；另設「最具節日特色大獎」3 名。獲獎者須按協會得獎電郵自行訂製獎狀及獎盃。</p>
+                <p><strong>日程與費用：</strong>2026 年 12 月 4 日（五）報名及作品提交截止；12 月 11 日（五）公布結果。官方頁面未列具體費用及繳費方式，但細則提及已提交的作品及費用概不退還，宜報名前向主辦方確認。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c12" data-competition="c12" data-grades="senior" data-contexts="pair small mid" data-eligibility="senior:pair,small,mid" data-supports="ai-carbon">
+          <div class="identity"><span class="num">12</span><span class="grades">高中組</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>2026–2027「氫建未來．小紅花 AI 向善挑戰賽」</h3><p class="hostline">主辦：成長希望基金會（Changing Young Lives Foundation）</p></div>
+              <span class="deadline-tag hot">11 月 6 日報名截止</span>
+            </div>
+            <div class="action-row" aria-label="氫建未來．小紅花 AI 向善挑戰賽官方及報名連結">
+              <a class="action-link" href="https://cn.changingyounglives.org.hk/service/steam/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link" href="https://drive.google.com/file/d/1pkJNrNFXMEiNGEoqy2kHSFF4-ZfYoDAz/view?usp=drive_link" target="_blank" rel="noopener noreferrer">賽道說明與例子</a>
+              <a class="action-link primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe2CzPuIGJOYWVsH0Yg5r4gtZoUN_e_53cYwF06DwlsjlRUyg/viewform" target="_blank" rel="noopener noreferrer">立即報名</a>
+              <span class="action-note">聯絡：steam@cylf.org.hk｜2319 3001／2319 3009｜WhatsApp 9756 7580</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>中學組只限高中學生（賽事另設大專組），以隊際形式參賽，每隊 2–5 人；每間院校參賽隊伍數目不限。</p></div>
+              <div class="block"><h4>主題與賽道</h4><p>主題為碳中和：先選「氫能源應用」或「低碳生活」其一，再選賽道 A「AI 應用」或賽道 B「AI 智能體」；作品須以人工智能為核心技術，並展現 AI 技術與向善價值。英文名稱：H2Future · AI for Good Challenge 2026–2027。</p></div>
+              <div class="block"><h4>評審準則</h4><ul><li>AI 元素 25%</li><li>向善價值 25%</li><li>創新 20%</li><li>可行性 20%</li><li>作品展示 10%</li></ul></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項（AI 教育發展激勵獎學金，分中學及大專組別）：</strong>小紅花科創家大獎港幣一萬元、冠軍港幣一萬元、亞軍港幣八千元、季軍港幣五千元；另設作品製作津貼，每隊上限港幣一千元（同一院校最多 3 隊）。費用方面，官方來源未提及報名費。</p>
+                <p><strong>日程：</strong>2026 年 11 月 6 日（五）報名截止；11 月上旬舉行線上簡介會（2 場）；2026 年 11 月至 2027 年 4 月設 AI 到校工作坊、社區研習及專題工作坊；2027 年 4 月 16 日（五）前提交參賽作品雛型影片及簡介；4 月 30 日（五）公布決賽入圍名單（中學組 5 隊、大專組 5 隊）；5 月初大灣區考察團、5 月中入圍作品優化營、5 月 24–25 日（一至二）作品展覽；得獎隊伍見習活動於 2027 年暑假舉行。決賽及頒獎日期待主辦公布。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="competition c13" data-competition="c13" data-grades="junior senior" data-contexts="pair small" data-eligibility="junior:pair,small;senior:pair,small" data-supports="ai-solution">
+          <div class="identity"><span class="num">13</span><span class="grades">S1–S6</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>香港創科高峰會 HK Innovators Summit</h3><p class="hostline">主辦：GYCSI（環球青年科創中心）、Bright Future Charitable Foundation、Bright Future Engineering Talent Hub</p></div>
+              <span class="deadline-tag">11 月 11 日報名截止</span>
+            </div>
+            <div class="action-row" aria-label="香港創科高峰會官方及報名連結">
+              <a class="action-link" href="https://www.gycsi.org/hk-innovators-summit" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeBEYERfGyt4g77FU6SufdVud3NqpJp5kFMkGwrYumT2glO7g/viewform" target="_blank" rel="noopener noreferrer">立即報名</a>
+              <span class="action-note">報名表格需登入 Google 帳戶；高峰會及決賽於香港城市大學舉行</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>中學組 S1–S6（比賽另設小學組 P4–P6），每隊 2–4 名學生，可混合同組別內不同年級；小學生與中學生不可同隊。本賽為 AI x Engineering Pioneer Program 的旗艦比賽。</p></div>
+              <div class="block"><h4>兩類隊伍</h4><p>School Teams 由學校老師報名、代表學校，成員須同校，每間學校最多 6 隊；Open Teams 由家長或監護人代表報名，不代表學校，可跨校組隊。兩類隊伍角逐同一獎項。</p></div>
+              <div class="block"><h4>參賽內容</h4><p>以人工智能解決真實世界問題的方案；入圍隊伍獲邀到香港城市大學向業界及大學學者評審團展示方案、獲得反饋並展出作品。作品格式以官方規則文件為準。費用全免。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項（每組別）：</strong>就教育、環境、醫療三個行業各設金、銀、銅獎；另設五項特別獎：Grand Award、People's Choice Award、Best Design Award、Most Innovative Award、Social Impact Award，金、銀、銅得獎者亦可競逐特別獎。不設金錢獎金；證書只頒給完成比賽要求的入圍隊伍。</p>
+                <p><strong>日程：</strong>2026 年 10 月 12 日（一）至 11 月 11 日（三）接受報名；2027 年 1 月 9 日（六）公布決賽版比賽規則及日程手冊；準備工作坊於 1 月 9 日（六）、1 月 23 日（六）及 2 月 20 日（六）舉行；3 月 3 日（三）作品提交截止；3 月 11 日（四）公布入圍名單；4 月 10 日（六）於香港城市大學舉行高峰會及決賽，獎項於當日結束時頒發（開始及結束時間待公布）。</p>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="timeline-wrap" id="timeline-section" aria-labelledby="timeline-title">
+      <div class="section-head"><h2 id="timeline-title">由近至遠的行動時間線</h2><p class="section-note">以香港時間排列</p></div>
+      <ol class="timeline">
+        <li data-competition="c3"><time datetime="2026-10-10">10.10（六）</time><span class="what">線下工作坊</span><span class="which">AlipayHK αdvice</span></li>
+        <li data-competition="c1"><time datetime="2026-10-30">10.30（五）</time><span class="what">報名截止</span><span class="which">夢溪 2026</span></li>
+        <li data-competition="c2"><time datetime="2026-10-31T23:59">10.31（六）</time><span class="what">學校報名截止 · 23:59</span><span class="which">航天築夢</span></li>
+        <li data-competition="c12"><time datetime="2026-11-06">11.06（五）</time><span class="what">報名截止</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
+        <li data-competition="c8"><time datetime="2026-11-08">11.08（日）</time><span class="what">報名及作品提交截止</span><span class="which">未來・無界影像</span></li>
+        <li data-competition="c1"><time datetime="2026-11-08">11.08（日）</time><span class="what">作品提交截止</span><span class="which">夢溪 2026</span></li>
+        <li data-competition="c13"><time datetime="2026-11-11">11.11（三）</time><span class="what">報名截止</span><span class="which">香港創科高峰會</span></li>
+        <li data-competition="c3"><time datetime="2026-11-13">11.13（五）</time><span class="what">作品提交截止</span><span class="which">AlipayHK αdvice</span></li>
+        <li data-competition="c4"><time datetime="2026-11-29T23:59">11.29（日）</time><span class="what">報名截止 · 23:59</span><span class="which">香港創科展</span></li>
+        <li data-competition="c11"><time datetime="2026-12-04">12.04（五）</time><span class="what">報名及作品提交截止</span><span class="which">聖誕節創意設計比賽</span></li>
+        <li data-competition="c1"><time datetime="2026-12-06">12.06（日）</time><span class="what">總決賽</span><span class="which">夢溪 2026</span></li>
+        <li data-competition="c3"><time datetime="2026-12-08">12.08–12<br>（二至六）</time><span class="what">公開投票；12 日決賽暨頒獎</span><span class="which">AlipayHK αdvice</span></li>
+        <li data-competition="c11"><time datetime="2026-12-11">12.11（五）</time><span class="what">結果公布</span><span class="which">聖誕節創意設計比賽</span></li>
+        <li data-competition="c5"><time datetime="2026-12-21">12.21（一）</time><span class="what">學校報名截止</span><span class="which">國民身份認同應用程式設計</span></li>
+        <li data-competition="c8"><time datetime="2026-12-31">12.31（四）</time><span class="what">決賽作品最終提交</span><span class="which">未來・無界影像</span></li>
+        <li data-competition="c9"><time datetime="2026-12-31">12.31（四）</time><span class="what">報名及作品提交截止</span><span class="which">樂齡科技產品設計賽</span></li>
+        <li data-competition="c9"><time datetime="2027-01-07">2027.01.07（四）</time><span class="what">結果公布</span><span class="which">樂齡科技產品設計賽</span></li>
+        <li data-competition="c5"><time datetime="2027-01-08T17:00">2027.01.08（五）</time><span class="what">作品提交截止 · 17:00</span><span class="which">國民身份認同應用程式設計</span></li>
+        <li data-competition="c6"><time datetime="2027-01-30T23:59">2027.01.30（六）</time><span class="what">設計提交截止 · 23:59</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c8"><time datetime="2027-01-30">2027.01.30（六）</time><span class="what">頒獎禮</span><span class="which">未來・無界影像</span></li>
+        <li data-competition="c4"><time datetime="2027-02-28">2027.02.28（日）</time><span class="what">作品提交截止</span><span class="which">香港創科展</span></li>
+        <li data-competition="c13"><time datetime="2027-03-03">2027.03.03（三）</time><span class="what">作品提交截止</span><span class="which">香港創科高峰會</span></li>
+        <li data-competition="c6"><time datetime="2027-03-20">2027.03.20（六）</time><span class="what">場地實測</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c2"><time datetime="2027-03-31">2027.03.31（三）</time><span class="what">作品提交截止</span><span class="which">航天築夢</span></li>
+        <li data-competition="c7"><time datetime="2027-03-31T23:59">2027.03.31（三）</time><span class="what">報名兼交件截止 · 23:59</span><span class="which">道路安全 STEAM</span></li>
+        <li data-competition="c5"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">網上決賽面試</span><span class="which">國民身份認同應用程式設計</span></li>
+        <li data-competition="c13"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">高峰會及決賽 · 香港城市大學</span><span class="which">香港創科高峰會</span></li>
+        <li data-competition="c10"><time datetime="2027-04-15T23:59">2027.04.15（四）</time><span class="what">網上報名截止 · 23:59</span><span class="which">大灣區數字教育 STEAM 卓越獎</span></li>
+        <li data-competition="c12"><time datetime="2027-04-16">2027.04.16（五）</time><span class="what">作品提交截止 · 雛型影片及簡介</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
+        <li data-competition="c6"><time datetime="2027-04-17">2027.04.17（六）</time><span class="what">模型航行比賽</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c12"><time datetime="2027-04-30">2027.04.30（五）</time><span class="what">決賽入圍名單公布</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
+        <li data-competition="c6"><time datetime="2027-05-08">2027.05.08（六）</time><span class="what">展覽及頒獎</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c12"><time datetime="2027-05-24">2027.05.24–25<br>（一至二）</time><span class="what">作品展覽</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
+        <li data-competition="c4"><time datetime="2027-06-26">2027.06.26–27<br>（六至日）</time><span class="what">會展展覽</span><span class="which">香港創科展</span></li>
+      </ol>
+      <div class="warning" id="timeline-warning">
+        <p data-warning-for="c2"><strong>航天築夢：</strong>總決賽的官方資料對 2027 年 5 月「中旬／下旬」有出入，以主辦方最新通知為準。</p>
+        <p data-warning-for="c3"><strong>AlipayHK：</strong>工作影子計劃有兩個官方日期版本，以主辦方最新通知為準。</p>
+      </div>
+    </section>
+
+    <p class="footer-note">本頁聚焦中學組資料。凡標示「未提及」的費用項目，代表現有官方資料未有列明，並不等同免費。</p>
+  </main>
+
+  <script>
+    (function () {
+      var groups = Array.prototype.slice.call(document.querySelectorAll('[data-filter-group]'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('[data-competition][data-grades]'));
+      var timelineItems = Array.prototype.slice.call(document.querySelectorAll('.timeline [data-competition]'));
+      var summary = document.getElementById('filter-summary');
+      var totalCompetitions = document.querySelectorAll('#compare-grid .comp').length;
+      var compareGrid = document.getElementById('compare-grid');
+      var noResults = document.getElementById('no-results');
+      var warning = document.getElementById('timeline-warning');
+      var warningItems = Array.prototype.slice.call(warning.querySelectorAll('[data-warning-for]'));
+      var detailSection = document.getElementById('detail-section');
+      var timelineSection = document.getElementById('timeline-section');
+      var compareCards = Array.prototype.slice.call(document.querySelectorAll('#compare-grid .comp'));
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var active = { grades: 'all', contexts: 'all', supports: 'all' };
+
+      compareCards.forEach(function (card) {
+        var competitionKey = card.getAttribute('data-competition');
+        var target = document.querySelector('#detail-grid .competition[data-competition="' + competitionKey + '"]');
+        var title = card.querySelector('h3');
+        if (!target) return;
+
+        target.id = 'competition-' + competitionKey;
+        target.setAttribute('tabindex', '-1');
+        card.setAttribute('role', 'link');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-controls', target.id);
+        card.setAttribute('aria-label', '查看「' + title.textContent + '」詳細內容');
+
+        function goToDetails() {
+          target.focus({ preventScroll: true });
+          target.scrollIntoView({
+            behavior: prefersReducedMotion.matches ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        }
+
+        card.addEventListener('click', goToDetails);
+        card.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            goToDetails();
+          }
+        });
+      });
+
+      function hasValue(item, dimension, value) {
+        if (value === 'all') return true;
+        return item.getAttribute('data-' + dimension).split(' ').indexOf(value) !== -1;
+      }
+
+      function matchesGradeAndContext(item) {
+        var grade = active.grades;
+        var context = active.contexts;
+        var combinations = item.getAttribute('data-eligibility').split(';').map(function (entry) {
+          var parts = entry.split(':');
+          return { grade: parts[0], contexts: parts[1].split(',') };
+        });
+        return combinations.some(function (combination) {
+          var gradeMatches = grade === 'all' || combination.grade === grade;
+          var contextMatches = context === 'all' || combination.contexts.indexOf(context) !== -1;
+          return gradeMatches && contextMatches;
+        });
+      }
+
+      function applyFilters() {
+        var visibleCompetitions = {};
+
+        cards.forEach(function (card) {
+          var matches = matchesGradeAndContext(card) && hasValue(card, 'supports', active.supports);
+          card.hidden = !matches;
+          if (matches) visibleCompetitions[card.getAttribute('data-competition')] = true;
+        });
+
+        var count = Object.keys(visibleCompetitions).length;
+        timelineItems.forEach(function (item) {
+          item.hidden = !visibleCompetitions[item.getAttribute('data-competition')];
+        });
+        warningItems.forEach(function (item) {
+          item.hidden = !visibleCompetitions[item.getAttribute('data-warning-for')];
+        });
+        warning.hidden = !visibleCompetitions.c2 && !visibleCompetitions.c3;
+        compareGrid.hidden = count === 0;
+        noResults.hidden = count !== 0;
+        detailSection.hidden = count === 0;
+        timelineSection.hidden = count === 0;
+        summary.textContent = count === totalCompetitions ? '顯示全部 ' + totalCompetitions + ' 項比賽' : '顯示 ' + count + ' 項符合條件的比賽';
+      }
+
+      groups.forEach(function (group) {
+        var dimension = group.getAttribute('data-filter-group');
+        var buttons = Array.prototype.slice.call(group.querySelectorAll('.filter'));
+        buttons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            active[dimension] = button.getAttribute('data-value');
+            buttons.forEach(function (candidate) {
+              candidate.setAttribute('aria-pressed', String(candidate === button));
+            });
+            applyFilters();
+          });
+        });
+      });
+
+      applyFilters();
+    }());
+  </script>
+</body>
+</html>
