@@ -230,6 +230,7 @@
     .c12 { --accent: #b02a6b; }
     .c13 { --accent: #5e4fa3; }
     .c14 { --accent: #c2501e; }
+    .c15 { --accent: #1f6e8c; }
     @media (prefers-color-scheme: dark) {
       .c5 { --accent: #b5cf70; }
       .c6 { --accent: #e5a36c; }
@@ -241,6 +242,7 @@
       .c12 { --accent: #e58bb5; }
       .c13 { --accent: #b3a6e8; }
       .c14 { --accent: #f0916a; }
+      .c15 { --accent: #8cc3dc; }
     }
 
     .cards { display: grid; gap: 18px; }
@@ -278,6 +280,7 @@
     .competition.c12 { --brand: #b02a6b; }
     .competition.c13 { --brand: #5e4fa3; }
     .competition.c14 { --brand: #b34a1d; }
+    .competition.c15 { --brand: #1c637f; }
     .body { padding: 26px 28px 30px; min-width: 0; }
     .topline { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
     .body h3 { margin: 0; font-size: clamp(1.25rem, 2.5vw, 1.72rem); line-height: 1.28; letter-spacing: -.025em; }
@@ -445,12 +448,12 @@
   <main class="page">
     <section class="hero" aria-labelledby="main-title">
       <div>
-        <h1 id="main-title">十四項中學創科比賽，一頁比較</h1>
+        <h1 id="main-title">十五項中學創科比賽，一頁比較</h1>
         <p class="hero-intro">由參賽人數、作品形式到獎項與截止日期，先看最緊急的，再按年級、組隊情境和所需支援篩選合適機會。</p>
       </div>
       <aside class="snapshot" aria-label="資料狀態">
-        <strong>2026 年 10 月 20 日更新</strong>
-        <p>新增學生創新大賽 2027（香港教育城）；AlipayHK 已截止報名。</p>
+        <strong>2026 年 10 月 26 日更新</strong>
+        <p>新增「全民國家安全教育日」全港學界無人機表演構圖創作比賽（2026/27）（教育局）；AlipayHK 已截止報名。</p>
       </aside>
     </section>
 
@@ -512,9 +515,11 @@
             <button class="filter" type="button" data-value="ai-carbon" aria-pressed="false">AI＋碳中和作品製作支援</button>
             <button class="filter" type="button" data-value="ai-solution" aria-pressed="false">AI 方案製作支援</button>
             <button class="filter" type="button" data-value="innovation-plan" aria-pressed="false">創新方案企劃</button>
+            <button class="filter" type="button" data-value="teacher-help" aria-pressed="false">老師協助</button>
+            <button class="filter" type="button" data-value="visual-design" aria-pressed="false">設計／視覺創作支援</button>
           </div>
         </div>
-        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 14 項比賽</p>
+        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 15 項比賽</p>
       </div>
 
       <div class="compare" id="compare-grid">
@@ -684,6 +689,18 @@
             <li><b>費用</b><span>官網未提及</span></li>
             <li><b>主作品</b><span>創新方案簡報＋匯報</span></li>
             <li><b>報名截止</b><span>2027 年 1 月 15 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c15" data-competition="c15" data-grades="junior senior" data-contexts="solo pair small mid" data-eligibility="junior:solo,pair,small,mid;senior:solo,pair,small,mid" data-supports="teacher-help visual-design">
+          <span class="comp-code">15 · 無人機構圖</span>
+          <h3>「全民國家安全教育日」全港學界無人機表演構圖創作比賽（2026/27）</h3>
+          <p class="host">教育局（支持機構：紫荊文化集團）</p>
+          <span class="status open">接受學校提交</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>個人或每組最多 5 人</span></li>
+            <li><b>費用</b><span>全免</span></li>
+            <li><b>主作品</b><span>無人機編隊表演構圖</span></li>
+            <li><b>報名及提交</b><span>2027 年 1 月 18 日截止</span></li>
           </ul>
         </article>
       </div>
@@ -1070,6 +1087,34 @@
             </details>
           </div>
         </article>
+
+        <article class="competition c15" data-competition="c15" data-grades="junior senior" data-contexts="solo pair small mid" data-eligibility="junior:solo,pair,small,mid;senior:solo,pair,small,mid" data-supports="teacher-help visual-design">
+          <div class="identity"><span class="num">15</span><span class="grades">中一至中六</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>「全民國家安全教育日」全港學界無人機表演構圖創作比賽（2026/27）</h3><p class="hostline">主辦：教育局｜支持機構：紫荊文化集團</p></div>
+              <span class="deadline-tag">2027 年 1 月 18 日截止</span>
+            </div>
+            <div class="action-row" aria-label="無人機表演構圖創作比賽官方連結">
+              <a class="action-link" href="https://applications.edb.gov.hk/circular/upload/EDBCM/EDBCM26132C.pdf" target="_blank" rel="noopener noreferrer">教育局通函（第 132/2026 號）</a>
+              <a class="action-link" href="https://www.edb.gov.hk/tc/curriculum-development/4-key-tasks/moral-civic/nse/circulars.html" target="_blank" rel="noopener noreferrer">報名表格下載</a>
+              <a class="action-link" href="https://www.edb.gov.hk/tc/neosp" target="_blank" rel="noopener noreferrer">結果公布（國民教育一站通）</a>
+              <span class="action-note">查詢：2892 6316／2892 6182｜mcne3@edb.gov.hk</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>初中組中一至中三、高中組中四至中六（賽事另設初小組小一至小三及高小組小四至小六）；以個人或小組形式參賽，二選其一，每組最多 5 名學生，不可同時以個人及小組參賽，每人／每隊限交一份作品。</p></div>
+              <div class="block"><h4>主題與作品</h4><p>以香港維護國家安全的成果為主題，傳達「國安家好」的訊息，設計無人機編隊飛行表演構圖。作品須為單一定格畫面（不接受連環畫面），平面圖像以深色為底色，設計中文字佔版面不超過四分之一，並附中文或英文標題及 40 至 100 字的設計意念說明（中文或英文）。</p></div>
+              <div class="block"><h4>提交方式</h4><p>學校須先作校內初步遴選，每校最多推薦 3 份作品競逐獎項，所有作品經學校統一提交。檔案只限 JPEG 或 PDF，不超過 20MB，須上載至雲端儲存空間，並於參賽作品資料表提供連結；繪圖方式不限（手繪、電腦繪圖、混合媒介）。如使用 AI 工具協助製作，須說明所用工具名稱及過程（包括提示詞），並確保作品原創及不侵犯版權。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>初中組及高中組各設冠、亞、季軍和優異獎（個人及隊伍均可），得獎學生獲紀念獎盃及獎狀；學校獎項包括「十八區積極參與學校獎」（每區參與率最高的學校）及「最積極參與學校獎」（全港參與率首五所學校），得獎學校獲頒獎盃；每名參賽學生均獲發電子嘉許狀。評審準則：切合主題、創作與視覺美感、可執行性。費用全免。</p>
+                <p><strong>日程：</strong>2027 年 1 月 18 日（一）截止報名及提交，學校須將報名表格及參賽作品資料表電郵至 mcne3@edb.gov.hk；優秀作品有機會於 2027 年 4 月 15 日（四）「全民國家安全教育日」的無人機飛行表演中呈現。</p>
+              </div>
+            </details>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1095,6 +1140,7 @@
         <li data-competition="c9"><time datetime="2027-01-07">2027.01.07（四）</time><span class="what">結果公布</span><span class="which">樂齡科技產品設計賽</span></li>
         <li data-competition="c5"><time datetime="2027-01-08T17:00">2027.01.08（五）</time><span class="what">作品提交截止 · 17:00</span><span class="which">國民身份認同應用程式設計</span></li>
         <li data-competition="c14"><time datetime="2027-01-15">2027.01.15（五）</time><span class="what">報名截止 · 同時提交初步提案</span><span class="which">學生創新大賽</span></li>
+        <li data-competition="c15"><time datetime="2027-01-18">2027.01.18（一）</time><span class="what">報名及作品提交截止 · 學校統一電郵提交</span><span class="which">無人機表演構圖創作比賽</span></li>
         <li data-competition="c6"><time datetime="2027-01-30T23:59">2027.01.30（六）</time><span class="what">設計提交截止 · 23:59</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c8"><time datetime="2027-01-30">2027.01.30（六）</time><span class="what">頒獎禮</span><span class="which">未來・無界影像</span></li>
         <li data-competition="c4"><time datetime="2027-02-28">2027.02.28（日）</time><span class="what">作品提交截止</span><span class="which">香港創科展</span></li>
@@ -1105,6 +1151,7 @@
         <li data-competition="c5"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">網上決賽面試</span><span class="which">國民身份認同應用程式設計</span></li>
         <li data-competition="c13"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">高峰會及決賽 · 香港城市大學</span><span class="which">香港創科高峰會</span></li>
         <li data-competition="c10"><time datetime="2027-04-15T23:59">2027.04.15（四）</time><span class="what">網上報名截止 · 23:59</span><span class="which">大灣區數字教育 STEAM 卓越獎</span></li>
+        <li data-competition="c15"><time datetime="2027-04-15">2027.04.15（四）</time><span class="what">優秀作品或於無人機飛行表演中呈現</span><span class="which">無人機表演構圖創作比賽</span></li>
         <li data-competition="c12"><time datetime="2027-04-16">2027.04.16（五）</time><span class="what">作品提交截止 · 雛型影片及簡介</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c6"><time datetime="2027-04-17">2027.04.17（六）</time><span class="what">模型航行比賽</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c14"><time datetime="2027-04-18">2027.04.18（日）</time><span class="what">修訂提案提交截止</span><span class="which">學生創新大賽</span></li>
