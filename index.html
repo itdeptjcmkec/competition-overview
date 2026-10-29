@@ -231,6 +231,7 @@
     .c13 { --accent: #5e4fa3; }
     .c14 { --accent: #c2501e; }
     .c15 { --accent: #1f6e8c; }
+    .c16 { --accent: #8c2f39; }
     @media (prefers-color-scheme: dark) {
       .c5 { --accent: #b5cf70; }
       .c6 { --accent: #e5a36c; }
@@ -243,6 +244,7 @@
       .c13 { --accent: #b3a6e8; }
       .c14 { --accent: #f0916a; }
       .c15 { --accent: #8cc3dc; }
+      .c16 { --accent: #e5989b; }
     }
 
     .cards { display: grid; gap: 18px; }
@@ -281,6 +283,7 @@
     .competition.c13 { --brand: #5e4fa3; }
     .competition.c14 { --brand: #b34a1d; }
     .competition.c15 { --brand: #1c637f; }
+    .competition.c16 { --brand: #8c2f39; }
     .body { padding: 26px 28px 30px; min-width: 0; }
     .topline { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
     .body h3 { margin: 0; font-size: clamp(1.25rem, 2.5vw, 1.72rem); line-height: 1.28; letter-spacing: -.025em; }
@@ -448,12 +451,12 @@
   <main class="page">
     <section class="hero" aria-labelledby="main-title">
       <div>
-        <h1 id="main-title">十五項中學創科比賽，一頁比較</h1>
+        <h1 id="main-title">十六項中學創科比賽，一頁比較</h1>
         <p class="hero-intro">由參賽人數、作品形式到獎項與截止日期，先看最緊急的，再按年級、組隊情境和所需支援篩選合適機會。</p>
       </div>
       <aside class="snapshot" aria-label="資料狀態">
-        <strong>2026 年 10 月 26 日更新</strong>
-        <p>新增「全民國家安全教育日」全港學界無人機表演構圖創作比賽（2026/27）（教育局）；AlipayHK 已截止報名。</p>
+        <strong>2026 年 10 月 29 日更新</strong>
+        <p>新增 STEM+E Competition 2026/27（STEM+E Consortium）；AlipayHK 已截止報名。</p>
       </aside>
     </section>
 
@@ -519,7 +522,7 @@
             <button class="filter" type="button" data-value="visual-design" aria-pressed="false">設計／視覺創作支援</button>
           </div>
         </div>
-        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 15 項比賽</p>
+        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 16 項比賽</p>
       </div>
 
       <div class="compare" id="compare-grid">
@@ -701,6 +704,18 @@
             <li><b>費用</b><span>全免</span></li>
             <li><b>主作品</b><span>無人機編隊表演構圖</span></li>
             <li><b>報名及提交</b><span>2027 年 1 月 18 日截止</span></li>
+          </ul>
+        </article>
+        <article class="comp c16" data-competition="c16" data-grades="junior senior" data-contexts="solo" data-eligibility="junior:solo;senior:solo" data-supports="innovation-plan prototype">
+          <span class="comp-code">16 · STEM+E 創新</span>
+          <h3>STEM+E Competition 2026/27</h3>
+          <p class="host">STEM+E Consortium</p>
+          <span class="status open">接受學校提名報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>每校提名最多 20 人</span></li>
+            <li><b>年級</b><span>中三至中五</span></li>
+            <li><b>主作品</b><span>智慧城市創新方案</span></li>
+            <li><b>報名截止</b><span>11 月 30 日 23:59</span></li>
           </ul>
         </article>
       </div>
@@ -1115,6 +1130,35 @@
             </details>
           </div>
         </article>
+
+        <article class="competition c16" data-competition="c16" data-grades="junior senior" data-contexts="solo" data-eligibility="junior:solo;senior:solo" data-supports="innovation-plan prototype">
+          <div class="identity"><span class="num">16</span><span class="grades">S.3–S.5</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>STEM+E Competition 2026/27</h3><p class="hostline">主辦：STEM+E Consortium｜資助：創新科技署｜協辦：數碼港、香港科技園</p></div>
+              <span class="deadline-tag">11 月 30 日 23:59 報名截止</span>
+            </div>
+            <div class="action-row" aria-label="STEM+E Competition 比賽及報名連結">
+              <a class="action-link" href="https://www.spehk.org/stem-e-competition" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://fs8.formsite.com/mTOtj6/2627register/index" target="_blank" rel="noopener noreferrer">學校報名</a>
+              <a class="action-link" href="https://fs8.formsite.com/mTOtj6/EOI2027/index" target="_blank" rel="noopener noreferrer">意向表格（EOI）</a>
+              <a class="action-link" href="https://mcusercontent.com/d5effda1009bd444e5221763f/files/e4b427ca-1e60-716e-d580-fefe1779a020/S2027_Recruitment_Poster_CN.pdf" target="_blank" rel="noopener noreferrer">招募海報</a>
+              <span class="action-note">聯絡：event@spehk.org｜+852 6306 0121</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與提名</h4><p>中三至中五（S.3–S.5）學生，任何科目／學科均可參加；比賽語言為英文或中文（粵語或普通話）。由學校老師統籌提名學生，每校提名學生人數上限為 20 人，學生不可自行報名。</p></div>
+              <div class="block"><h4>組隊與形式</h4><p>學生不可自行同校組隊——主辦方會隨機分組，每隊由來自不同學校及背景的學生組成。參加者與初創企業合作，接受初創企業創辦人及企業管理人員培訓和指導，應用 STEM 知識進行創新，並接觸與未來職業生涯相關的課外知識；所有參賽學生均合資格參與暑期活動。</p></div>
+              <div class="block"><h4>主題、地點與時間</h4><p>主題：「善用科技，創建智慧城市」。舉辦地點：數碼港、香港科學園、香港科技大學（待定）；活動於指定星期六早上進行，每次 3 小時。學校未有學生名單時，可先提交意向表格留位。官方資料未有提及參賽費用。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>優勝隊伍（團隊嘉許）、最有價值參加者（個人）、最有價值參加者學校、年度最有價值參加者學校。</p>
+                <p><strong>日程（2027 年，逢星期六早上）：</strong>2 月 27 日開幕典禮和簡介；3 月 6 日解決方案簡報工作坊；3 月 13 日第一次會見初創企業；3 月 20 日第一次會見導師；4 月 10 日第二次會見初創企業；4 月 17 日第二次會見導師；4 月 24 日創新科技實踐日營；5 月 8 日準決賽；5 月 15 日決賽及頒獎典禮。報名截止：2026 年 11 月 30 日（一）23:59。</p>
+              </div>
+            </details>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1130,6 +1174,7 @@
         <li data-competition="c13"><time datetime="2026-11-11">11.11（三）</time><span class="what">報名截止</span><span class="which">香港創科高峰會</span></li>
         <li data-competition="c3"><time datetime="2026-11-13">11.13（五）</time><span class="what">作品提交截止</span><span class="which">AlipayHK αdvice</span></li>
         <li data-competition="c4"><time datetime="2026-11-29T23:59">11.29（日）</time><span class="what">報名截止 · 23:59</span><span class="which">香港創科展</span></li>
+        <li data-competition="c16"><time datetime="2026-11-30T23:59">11.30（一）</time><span class="what">報名截止 · 23:59</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c11"><time datetime="2026-12-04">12.04（五）</time><span class="what">報名及作品提交截止</span><span class="which">聖誕節創意設計比賽</span></li>
         <li data-competition="c1"><time datetime="2026-12-06">12.06（日）</time><span class="what">總決賽</span><span class="which">夢溪少年談</span></li>
         <li data-competition="c3"><time datetime="2026-12-08">12.08–12<br>（二至六）</time><span class="what">公開投票；12 日決賽暨頒獎</span><span class="which">AlipayHK αdvice</span></li>
@@ -1143,20 +1188,29 @@
         <li data-competition="c15"><time datetime="2027-01-18">2027.01.18（一）</time><span class="what">報名及作品提交截止 · 學校統一電郵提交</span><span class="which">無人機表演構圖創作比賽</span></li>
         <li data-competition="c6"><time datetime="2027-01-30T23:59">2027.01.30（六）</time><span class="what">設計提交截止 · 23:59</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c8"><time datetime="2027-01-30">2027.01.30（六）</time><span class="what">頒獎禮</span><span class="which">未來・無界影像</span></li>
+        <li data-competition="c16"><time datetime="2027-02-27">2027.02.27（六）</time><span class="what">開幕典禮和簡介</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c4"><time datetime="2027-02-28">2027.02.28（日）</time><span class="what">作品提交截止</span><span class="which">香港創科展</span></li>
         <li data-competition="c13"><time datetime="2027-03-03">2027.03.03（三）</time><span class="what">作品提交截止</span><span class="which">香港創科高峰會</span></li>
+        <li data-competition="c16"><time datetime="2027-03-06">2027.03.06（六）</time><span class="what">解決方案簡報工作坊</span><span class="which">STEM+E Competition</span></li>
+        <li data-competition="c16"><time datetime="2027-03-13">2027.03.13（六）</time><span class="what">第一次會見初創企業</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c6"><time datetime="2027-03-20">2027.03.20（六）</time><span class="what">場地實測</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c16"><time datetime="2027-03-20">2027.03.20（六）</time><span class="what">第一次會見導師</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c2"><time datetime="2027-03-31">2027.03.31（三）</time><span class="what">作品提交截止</span><span class="which">航天築夢</span></li>
         <li data-competition="c7"><time datetime="2027-03-31T23:59">2027.03.31（三）</time><span class="what">報名兼交件截止 · 23:59</span><span class="which">道路安全 STEAM</span></li>
         <li data-competition="c5"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">網上決賽面試</span><span class="which">國民身份認同應用程式設計</span></li>
         <li data-competition="c13"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">高峰會及決賽 · 香港城市大學</span><span class="which">香港創科高峰會</span></li>
+        <li data-competition="c16"><time datetime="2027-04-10">2027.04.10（六）</time><span class="what">第二次會見初創企業</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c10"><time datetime="2027-04-15T23:59">2027.04.15（四）</time><span class="what">網上報名截止 · 23:59</span><span class="which">大灣區數字教育 STEAM 卓越獎</span></li>
         <li data-competition="c15"><time datetime="2027-04-15">2027.04.15（四）</time><span class="what">優秀作品或於無人機飛行表演中呈現</span><span class="which">無人機表演構圖創作比賽</span></li>
         <li data-competition="c12"><time datetime="2027-04-16">2027.04.16（五）</time><span class="what">作品提交截止 · 雛型影片及簡介</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c6"><time datetime="2027-04-17">2027.04.17（六）</time><span class="what">模型航行比賽</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c16"><time datetime="2027-04-17">2027.04.17（六）</time><span class="what">第二次會見導師</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c14"><time datetime="2027-04-18">2027.04.18（日）</time><span class="what">修訂提案提交截止</span><span class="which">學生創新大賽</span></li>
+        <li data-competition="c16"><time datetime="2027-04-24">2027.04.24（六）</time><span class="what">創新科技實踐日營</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c12"><time datetime="2027-04-30">2027.04.30（五）</time><span class="what">決賽入圍名單公布</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c6"><time datetime="2027-05-08">2027.05.08（六）</time><span class="what">展覽及頒獎</span><span class="which">STEM × 海洋航行器</span></li>
+        <li data-competition="c16"><time datetime="2027-05-08">2027.05.08（六）</time><span class="what">準決賽</span><span class="which">STEM+E Competition</span></li>
+        <li data-competition="c16"><time datetime="2027-05-15">2027.05.15（六）</time><span class="what">決賽及頒獎典禮</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c12"><time datetime="2027-05-24">2027.05.24–25<br>（一至二）</time><span class="what">作品展覽</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c4"><time datetime="2027-06-26">2027.06.26–27<br>（六至日）</time><span class="what">會展展覽</span><span class="which">香港創科展</span></li>
       </ol>
