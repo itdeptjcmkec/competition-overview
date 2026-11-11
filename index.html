@@ -232,6 +232,7 @@
     .c14 { --accent: #c2501e; }
     .c15 { --accent: #1f6e8c; }
     .c16 { --accent: #8c2f39; }
+    .c17 { --accent: #0f766e; }
     @media (prefers-color-scheme: dark) {
       .c5 { --accent: #b5cf70; }
       .c6 { --accent: #e5a36c; }
@@ -245,6 +246,7 @@
       .c14 { --accent: #f0916a; }
       .c15 { --accent: #8cc3dc; }
       .c16 { --accent: #e5989b; }
+      .c17 { --accent: #5eead4; }
     }
 
     .cards { display: grid; gap: 18px; }
@@ -284,6 +286,7 @@
     .competition.c14 { --brand: #b34a1d; }
     .competition.c15 { --brand: #1c637f; }
     .competition.c16 { --brand: #8c2f39; }
+    .competition.c17 { --brand: #0f766e; }
     .body { padding: 26px 28px 30px; min-width: 0; }
     .topline { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
     .body h3 { margin: 0; font-size: clamp(1.25rem, 2.5vw, 1.72rem); line-height: 1.28; letter-spacing: -.025em; }
@@ -451,12 +454,12 @@
   <main class="page">
     <section class="hero" aria-labelledby="main-title">
       <div>
-        <h1 id="main-title">十六項中學創科比賽，一頁比較</h1>
+        <h1 id="main-title">十七項中學創科比賽，一頁比較</h1>
         <p class="hero-intro">由參賽人數、作品形式到獎項與截止日期，先看最緊急的，再按年級、組隊情境和所需支援篩選合適機會。</p>
       </div>
       <aside class="snapshot" aria-label="資料狀態">
-        <strong>2026 年 10 月 29 日更新</strong>
-        <p>新增 STEM+E Competition 2026/27（STEM+E Consortium）；AlipayHK 已截止報名。</p>
+        <strong>2026 年 11 月 12 日更新</strong>
+        <p>新增 Innovation x Technology Competition 2027（職業訓練局 VTC 青年學院（國際課程））。</p>
       </aside>
     </section>
 
@@ -522,7 +525,7 @@
             <button class="filter" type="button" data-value="visual-design" aria-pressed="false">設計／視覺創作支援</button>
           </div>
         </div>
-        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 16 項比賽</p>
+        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 17 項比賽</p>
       </div>
 
       <div class="compare" id="compare-grid">
@@ -716,6 +719,18 @@
             <li><b>年級</b><span>中三至中五</span></li>
             <li><b>主作品</b><span>智慧城市創新方案</span></li>
             <li><b>報名截止</b><span>11 月 30 日 23:59</span></li>
+          </ul>
+        </article>
+        <article class="comp c17" data-competition="c17" data-grades="junior senior" data-contexts="pair small mid" data-eligibility="junior:pair,small,mid;senior:pair,small,mid" data-supports="innovation-plan prototype">
+          <span class="comp-code">17 · 創新科技</span>
+          <h3>Innovation x Technology Competition 2027</h3>
+          <p class="host">職業訓練局（VTC）青年學院（國際課程）</p>
+          <span class="status open">接受報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>每隊 2–6 人（同校）</span></li>
+            <li><b>年級</b><span>中一至中四</span></li>
+            <li><b>主作品</b><span>概念方案＋創新產品原型</span></li>
+            <li><b>報名截止</b><span>2027 年 2 月 19 日</span></li>
           </ul>
         </article>
       </div>
@@ -1159,6 +1174,32 @@
             </details>
           </div>
         </article>
+
+        <article class="competition c17" data-competition="c17" data-grades="junior senior" data-contexts="pair small mid" data-eligibility="junior:pair,small,mid;senior:pair,small,mid" data-supports="innovation-plan prototype">
+          <div class="identity"><span class="num">17</span><span class="grades">S.1–S.4</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>Innovation x Technology Competition 2027</h3><p class="hostline">主辦：職業訓練局（VTC）青年學院（國際課程）Youth College (International)｜自 2024 年起舉辦</p></div>
+              <span class="deadline-tag">2027 年 2 月 19 日截止</span>
+            </div>
+            <div class="action-row" aria-label="Innovation x Technology Competition 比賽及報名連結">
+              <a class="action-link" href="https://www.vtc.edu.hk/vb/ixt2027/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link primary" href="https://forms.cloud.microsoft/r/tnchmtNyDm" target="_blank" rel="noopener noreferrer">立即報名</a>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>本地中學中一至中四全日制學生（國際學校為 Grade 7–10 或同等）。每隊 2–6 名學生，須來自同一所學校，每隊須有 1 名負責老師；每校參賽隊數不限，每名學生只可參加一隊，可跨級組隊。</p></div>
+              <div class="block"><h4>主題與科技</h4><p>主題：「HK30：創新啟航，共譜新篇」；三個分題選一——可持續未來／智慧社區／好動之城。運用人工智能（AI）、微控制器編程、3D 打印及原型製作等科技，設計創新產品回應社會需求。</p></div>
+              <div class="block"><h4>報名與概念方案</h4><p>現正接受報名（2026 年 10 月開始）。填妥網上報名表，並於 2027 年 2 月 19 日（五）或之前提交概念方案：A3 尺寸項目海報一張＋不超過 5 頁的項目計劃書（Word 或 PDF）；成功報名後會收到確認電郵，內附提交詳情。官方資料未有提及參賽費用。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>獎項：</strong>冠軍、亞軍、季軍、優異獎；特別獎包括最具創意構思獎、最佳 STEAM 應用獎、最佳原型設計獎、社區影響力獎、可持續發展獎、最佳匯報獎；另設學校積極參與獎。歷屆有 70 多間學校、150 多項作品、500 多名學生參加。</p>
+                <p><strong>賽程：</strong>第一階段概念構思（2026 年 10 月至 2027 年 2 月）；2027 年 3 月技能提升工作坊；第二階段項目優化（2027 年 2 至 5 月，30 支入圍隊伍提交更新版計劃書及原型示範，獲香港大學等支持機構提供培訓及指導）；第三階段決賽匯報（2027 年 5 月，18 支隊伍向專業評審匯報、示範原型及答問，官方只公布月份）；2027 年 7 月公開展覽（官方只公布月份）。</p>
+              </div>
+            </details>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1188,6 +1229,7 @@
         <li data-competition="c15"><time datetime="2027-01-18">2027.01.18（一）</time><span class="what">報名及作品提交截止 · 學校統一電郵提交</span><span class="which">無人機表演構圖創作比賽</span></li>
         <li data-competition="c6"><time datetime="2027-01-30T23:59">2027.01.30（六）</time><span class="what">設計提交截止 · 23:59</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c8"><time datetime="2027-01-30">2027.01.30（六）</time><span class="what">頒獎禮</span><span class="which">未來・無界影像</span></li>
+        <li data-competition="c17"><time datetime="2027-02-19">2027.02.19（五）</time><span class="what">概念方案提交截止</span><span class="which">Innovation x Technology Competition</span></li>
         <li data-competition="c16"><time datetime="2027-02-27">2027.02.27（六）</time><span class="what">開幕典禮和簡介</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c4"><time datetime="2027-02-28">2027.02.28（日）</time><span class="what">作品提交截止</span><span class="which">香港創科展</span></li>
         <li data-competition="c13"><time datetime="2027-03-03">2027.03.03（三）</time><span class="what">作品提交截止</span><span class="which">香港創科高峰會</span></li>
@@ -1211,8 +1253,10 @@
         <li data-competition="c6"><time datetime="2027-05-08">2027.05.08（六）</time><span class="what">展覽及頒獎</span><span class="which">STEM × 海洋航行器</span></li>
         <li data-competition="c16"><time datetime="2027-05-08">2027.05.08（六）</time><span class="what">準決賽</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c16"><time datetime="2027-05-15">2027.05.15（六）</time><span class="what">決賽及頒獎典禮</span><span class="which">STEM+E Competition</span></li>
+        <li data-competition="c17"><time datetime="2027-05">2027.05</time><span class="what">決賽匯報（官方只公布月份）</span><span class="which">Innovation x Technology Competition</span></li>
         <li data-competition="c12"><time datetime="2027-05-24">2027.05.24–25<br>（一至二）</time><span class="what">作品展覽</span><span class="which">氫建未來．小紅花 AI 向善挑戰賽</span></li>
         <li data-competition="c4"><time datetime="2027-06-26">2027.06.26–27<br>（六至日）</time><span class="what">會展展覽</span><span class="which">香港創科展</span></li>
+        <li data-competition="c17"><time datetime="2027-07">2027.07</time><span class="what">公開展覽（官方只公布月份）</span><span class="which">Innovation x Technology Competition</span></li>
       </ol>
       <div class="warning" id="timeline-warning">
         <p data-warning-for="c2"><strong>航天築夢：</strong>總決賽的官方資料對 2027 年 5 月「中旬／下旬」有出入，以主辦方最新通知為準。</p>
