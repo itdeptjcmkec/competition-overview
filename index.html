@@ -233,6 +233,7 @@
     .c15 { --accent: #1f6e8c; }
     .c16 { --accent: #8c2f39; }
     .c17 { --accent: #0f766e; }
+    .c18 { --accent: #2e7d32; }
     @media (prefers-color-scheme: dark) {
       .c5 { --accent: #b5cf70; }
       .c6 { --accent: #e5a36c; }
@@ -247,6 +248,7 @@
       .c15 { --accent: #8cc3dc; }
       .c16 { --accent: #e5989b; }
       .c17 { --accent: #5eead4; }
+      .c18 { --accent: #81c784; }
     }
 
     .cards { display: grid; gap: 18px; }
@@ -287,6 +289,7 @@
     .competition.c15 { --brand: #1c637f; }
     .competition.c16 { --brand: #8c2f39; }
     .competition.c17 { --brand: #0f766e; }
+    .competition.c18 { --brand: #2e7d32; }
     .body { padding: 26px 28px 30px; min-width: 0; }
     .topline { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
     .body h3 { margin: 0; font-size: clamp(1.25rem, 2.5vw, 1.72rem); line-height: 1.28; letter-spacing: -.025em; }
@@ -454,12 +457,12 @@
   <main class="page">
     <section class="hero" aria-labelledby="main-title">
       <div>
-        <h1 id="main-title">十七項中學創科比賽，一頁比較</h1>
+        <h1 id="main-title">十八項中學創科比賽，一頁比較</h1>
         <p class="hero-intro">由參賽人數、作品形式到獎項與截止日期，先看最緊急的，再按年級、組隊情境和所需支援篩選合適機會。</p>
       </div>
       <aside class="snapshot" aria-label="資料狀態">
-        <strong>2026 年 11 月 12 日更新</strong>
-        <p>新增 Innovation x Technology Competition 2027（職業訓練局 VTC 青年學院（國際課程））。</p>
+        <strong>2026 年 11 月 13 日更新</strong>
+        <p>新增香港學生科學比賽 HKSSPC 2027（香港青年協會 HKFYG）。</p>
       </aside>
     </section>
 
@@ -525,7 +528,7 @@
             <button class="filter" type="button" data-value="visual-design" aria-pressed="false">設計／視覺創作支援</button>
           </div>
         </div>
-        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 17 項比賽</p>
+        <p class="filter-summary" id="filter-summary" aria-live="polite">顯示全部 18 項比賽</p>
       </div>
 
       <div class="compare" id="compare-grid">
@@ -731,6 +734,18 @@
             <li><b>年級</b><span>中一至中四</span></li>
             <li><b>主作品</b><span>概念方案＋創新產品原型</span></li>
             <li><b>報名截止</b><span>2027 年 2 月 19 日</span></li>
+          </ul>
+        </article>
+        <article class="comp c18" data-competition="c18" data-grades="junior senior" data-contexts="pair small mid" data-eligibility="junior:pair,small,mid;senior:pair,small,mid" data-supports="prototype">
+          <span class="comp-code">18 · 科學發明探究</span>
+          <h3>香港學生科學比賽 HKSSPC 2027</h3>
+          <p class="host">香港青年協會（HKFYG）</p>
+          <span class="status open">接受提名報名</span>
+          <ul class="facts">
+            <li><b>學生人數</b><span>每隊 2–5 人</span></li>
+            <li><b>費用</b><span>官方頁未提及</span></li>
+            <li><b>主作品</b><span>發明／探究／設計提案／壁報</span></li>
+            <li><b>提名截止</b><span>12 月 4 日</span></li>
           </ul>
         </article>
       </div>
@@ -1200,6 +1215,34 @@
             </details>
           </div>
         </article>
+
+        <article class="competition c18" data-competition="c18" data-grades="junior senior" data-contexts="pair small mid" data-eligibility="junior:pair,small,mid;senior:pair,small,mid" data-supports="prototype">
+          <div class="identity"><span class="num">18</span><span class="grades">中一至中六</span></div>
+          <div class="body">
+            <div class="topline">
+              <div><h3>香港學生科學比賽 HKSSPC 2027</h3><p class="hostline">主辦：香港青年協會（HKFYG）</p></div>
+              <span class="deadline-tag">12 月 4 日提名截止</span>
+            </div>
+            <div class="action-row" aria-label="香港學生科學比賽 HKSSPC 2027 官方連結">
+              <a class="action-link primary" href="https://hksspc.hkfyg.org.hk/en/competition_details/" target="_blank" rel="noopener noreferrer">比賽詳情</a>
+              <a class="action-link" href="https://hksspc.hkfyg.org.hk/en/2026/11/09/sspc27briefing_en/" target="_blank" rel="noopener noreferrer">網上簡介會</a>
+              <a class="action-link" href="https://hksspc.hkfyg.org.hk/en/2026/11/09/sspc27workshops_en/" target="_blank" rel="noopener noreferrer">培訓講座／工作坊</a>
+              <span class="action-note">查詢電話：(852) 2527 2448</span>
+            </div>
+            <div class="grid">
+              <div class="block"><h4>對象與組隊</h4><p>初中組中一至中三（須 17 歲以下）、高中組中四至中六，初中生可組隊參加高中組；另設科學壁報組。初中／高中組每隊 2–5 名學生，每校初中＋高中組合計最多 8 隊；壁報組最多 5 名學生。</p></div>
+              <div class="block"><h4>年度主題與項目類別</h4><p>2027 年度主題：「Green Transformation」（綠色轉型）；口號「Inspiration From Living ‧ Innovation From Science」。項目類別：(A) 發明（須有實物／模型示範）、(B) 探究（實驗數據＋報告）、設計提案類（未有實驗數據／原型者適用）；壁報組交 A1 海報，須扣年度主題，初中／高中組扣年度主題屬自選。</p></div>
+              <div class="block"><h4>費用與物料津貼</h4><p>官方頁未列明報名費（未提及）。物料津貼：初中／高中組 A 及 B 類每隊 HK$500，壁報組每生 HK$100。</p></div>
+            </div>
+            <details>
+              <summary>完整獎項與時間</summary>
+              <div class="detail-content">
+                <p><strong>重要條件及機會：</strong>2027 年換新報名平台，舊教師帳戶不可沿用，須重新開學校帳戶；開戶 ≠ 報名，須登入後按「ENROLL」才算完成報名。全部隊伍須完成文獻回顧及知識產權網上評核；初中／高中組優勝隊伍有機會獲提名參加海外比賽；2026/27 學年已交其他比賽的作品亦接受報名。</p>
+                <p><strong>日程：</strong>提名（報名）期為 2026 年 11 月 13 日（五）至 12 月 4 日（五）；網上簡介會於 2026 年 11 月 16 日（一）以廣東話進行。作品提交截止及評審日期官方已讀頁面未列明。</p>
+              </div>
+            </details>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1213,10 +1256,13 @@
         <li data-competition="c8"><time datetime="2026-11-08">11.08（日）</time><span class="what">報名及作品提交截止</span><span class="which">未來・無界影像</span></li>
         <li data-competition="c1"><time datetime="2026-11-08">11.08（日）</time><span class="what">作品提交截止</span><span class="which">夢溪少年談</span></li>
         <li data-competition="c13"><time datetime="2026-11-11">11.11（三）</time><span class="what">報名截止</span><span class="which">香港創科高峰會</span></li>
+        <li data-competition="c18"><time datetime="2026-11-13">11.13（五）</time><span class="what">提名（報名）期開始 · 至 12 月 4 日</span><span class="which">香港學生科學比賽 HKSSPC</span></li>
         <li data-competition="c3"><time datetime="2026-11-13">11.13（五）</time><span class="what">作品提交截止</span><span class="which">AlipayHK αdvice</span></li>
+        <li data-competition="c18"><time datetime="2026-11-16">11.16（一）</time><span class="what">網上簡介會 · 廣東話</span><span class="which">香港學生科學比賽 HKSSPC</span></li>
         <li data-competition="c4"><time datetime="2026-11-29T23:59">11.29（日）</time><span class="what">報名截止 · 23:59</span><span class="which">香港創科展</span></li>
         <li data-competition="c16"><time datetime="2026-11-30T23:59">11.30（一）</time><span class="what">報名截止 · 23:59</span><span class="which">STEM+E Competition</span></li>
         <li data-competition="c11"><time datetime="2026-12-04">12.04（五）</time><span class="what">報名及作品提交截止</span><span class="which">聖誕節創意設計比賽</span></li>
+        <li data-competition="c18"><time datetime="2026-12-04">12.04（五）</time><span class="what">提名（報名）截止</span><span class="which">香港學生科學比賽 HKSSPC</span></li>
         <li data-competition="c1"><time datetime="2026-12-06">12.06（日）</time><span class="what">總決賽</span><span class="which">夢溪少年談</span></li>
         <li data-competition="c3"><time datetime="2026-12-08">12.08–12<br>（二至六）</time><span class="what">公開投票；12 日決賽暨頒獎</span><span class="which">AlipayHK αdvice</span></li>
         <li data-competition="c11"><time datetime="2026-12-11">12.11（五）</time><span class="what">結果公布</span><span class="which">聖誕節創意設計比賽</span></li>
